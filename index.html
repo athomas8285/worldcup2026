@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--surface3:#171d35;--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff;--mono:"SF Mono","Cascadia Code","Consolas",monospace}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden;position:relative}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,11,20,.55);pointer-events:none;z-index:-1}
 .app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
 .ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
@@ -68,7 +68,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .tab-item.active .tab-label{font-weight:600}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--surface3:#171d35;--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff;--mono:"SF Mono","Cascadia Code","Consolas",monospace}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden;position:relative}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,11,20,.55);pointer-events:none;z-index:-1}
 .app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
 .ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
@@ -78,7 +78,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .content{flex:1;overflow-y:auto;padding:0 0 72px}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.08)}
 /* Date bar */
-.db-wrap{overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:10px 0 6px;border-bottom:1px solid rgba(0,229,255,.06);-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;position:sticky;top:0;z-index:10;background:#080b14 url("app背景图.png") center/cover fixed no-repeat}
+.db-wrap{overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:10px 0 6px;border-bottom:1px solid rgba(0,229,255,.06);-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;position:sticky;top:0;z-index:10;background:rgba(8,11,20,.85)}
 .db-wrap::-webkit-scrollbar{display:none}
 .db-inner{display:inline-flex;gap:4px;padding:0 12px}
 .db-item{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:10px;cursor:pointer;min-width:64px;text-align:center;font-family:inherit;border:none;background:var(--surface);border:1px solid transparent;transition:all .15s}
@@ -160,7 +160,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 *{margin:0;padding:0;box-sizing:border-box}
 .app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 :root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden;position:relative}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,11,20,.55);pointer-events:none;z-index:-1}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
 .ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
 .hr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);padding:4px 10px;border:1px solid rgba(0,229,255,.12);border-radius:16px}
@@ -177,7 +177,7 @@ a.article-card:hover{border-color:rgba(0,229,255,.2)}
 .article-summary{font-size:11px;color:var(--t2);line-height:1.5;margin-bottom:8px}
 .article-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
 .article-meta .article-views{font-size:10px;color:var(--t3)}
-.viewer-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;display:none;flex-direction:column}
+.viewer-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;background:#080b14;display:none;flex-direction:column}
 .viewer-overlay.active{display:flex}
 .viewer-header{display:flex;align-items:center;padding:10px 16px;background:rgba(8,11,20,.95);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
 .viewer-close{font-size:22px;cursor:pointer;color:var(--t2);padding:4px 8px;border:none;background:none;font-family:inherit;line-height:1}
@@ -207,7 +207,7 @@ a.article-card:hover{border-color:rgba(0,229,255,.2)}
 *{margin:0;padding:0;box-sizing:border-box}
 .app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 :root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden;position:relative}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,11,20,.55);pointer-events:none;z-index:-1}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
 .ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
 .hr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);padding:4px 10px;border:1px solid rgba(0,229,255,.12);border-radius:16px}
@@ -258,10 +258,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .tab-item.active{color:var(--cyan)}
 .tab-item .tab-icon{font-size:20px}.tab-item .tab-label{font-size:10px}
 .tab-item.active .tab-label{font-weight:600}
+.lb-wrap{width:200px;height:4px;background:rgba(0,229,255,.08);border-radius:4px;overflow:hidden}.lb-fill{width:100%;height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold),var(--cyan));background-size:200% 100%;border-radius:4px;animation:lb 1.6s ease-in-out infinite}@keyframes lb{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
 </style>
 </head>
 <body>
-<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#080b14;display:flex;align-items:center;justify-content:center;z-index:9999;color:#00e5ff;font-size:16px">加载中...</div>
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#080b14;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999"><div class="lb-wrap"><div class="lb-bar"><div class="lb-fill"></div></div></div><div style="color:#5a6577;font-size:13px;letter-spacing:2px;margin-top:20px">正在加载数据，请稍等几秒钟</div></div>
 <div class="app page" id="pageHome">
 <div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
 <div class="content">
@@ -398,15 +399,16 @@ function renderSchedule(){
 function renderStand(){
   var gk=Object.keys(GR),S={};
   gk.forEach(function(g){S[g]={};GR[g].forEach(function(t){S[g][t]={mp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0};});});
-  WM.forEach(function(m){
-    if(!m.s)return;var p=m.s.split("-");if(p.length!=2)return;
-    var gh=parseInt(p[0],10),ga=parseInt(p[1],10),gr=m.g,ht=m.h,at=m.a;
-    if(!S[gr]||!S[gr][ht]||!S[gr][at])return;
-    S[gr][ht].mp++;S[gr][at].mp++;S[gr][ht].gf+=gh;S[gr][at].gf+=ga;
-    S[gr][ht].ga+=ga;S[gr][at].ga+=gh;
-    if(gh>ga){S[gr][ht].w++;S[gr][ht].pts+=3;S[gr][at].l++;}
-    else if(gh<ga){S[gr][at].w++;S[gr][at].pts+=3;S[gr][ht].l++;}
-    else{S[gr][ht].d++;S[gr][at].d++;S[gr][ht].pts++;S[gr][at].pts++;}
+  __DATA.rating.forEach(function(m){
+    if(!m.actual_score)return;var p=m.actual_score.split("-");if(p.length!=2)return;
+    var gh=parseInt(p[0],10),ga=parseInt(p[1],10);
+    var gr=null;gk.forEach(function(g){if(GR[g].indexOf(m.home)>=0||GR[g].indexOf(m.away)>=0)gr=g;});
+    if(!gr||!S[gr][m.home]||!S[gr][m.away])return;
+    S[gr][m.home].mp++;S[gr][m.away].mp++;S[gr][m.home].gf+=gh;S[gr][m.away].gf+=ga;
+    S[gr][m.home].ga+=ga;S[gr][m.away].ga+=gh;
+    if(gh>ga){S[gr][m.home].w++;S[gr][m.home].pts+=3;S[gr][m.away].l++;}
+    else if(gh<ga){S[gr][m.away].w++;S[gr][m.away].pts+=3;S[gr][m.home].l++;}
+    else{S[gr][m.home].d++;S[gr][m.away].d++;S[gr][m.home].pts++;S[gr][m.away].pts++;}
   });
   gk.forEach(function(g){Object.keys(S[g]).forEach(function(t){S[g][t].gd=S[g][t].gf-S[g][t].ga;});});
   var h='<div class="section-title">🏆 小组积分榜 (12组)</div>';
@@ -855,12 +857,6 @@ function closeQR(e){
     document.getElementById("qrOverlay").classList.remove("active");
   }
 }
-// DIAGNOSTIC: force show this immediately
-var _diag = document.getElementById('loadingOverlay');
-if(_diag) {
-  _diag.style.background = '#1a1a2e';
-  _diag.innerHTML = '<div style="padding:20px;text-align:center;color:#0f0;font-size:18px">JS_STARTED</div>';
-}
 // Override initApp to catch all errors
 var _origInit = window.initApp;
 window.initApp = async function() {
@@ -1023,15 +1019,16 @@ function renderSchedule(){
 function renderStand(){
   var gk=Object.keys(GR),S={};
   gk.forEach(function(g){S[g]={};GR[g].forEach(function(t){S[g][t]={mp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0};});});
-  WM.forEach(function(m){
-    if(!m.s)return;var p=m.s.split("-");if(p.length!=2)return;
-    var gh=parseInt(p[0],10),ga=parseInt(p[1],10),gr=m.g,ht=m.h,at=m.a;
-    if(!S[gr]||!S[gr][ht]||!S[gr][at])return;
-    S[gr][ht].mp++;S[gr][at].mp++;S[gr][ht].gf+=gh;S[gr][at].gf+=ga;
-    S[gr][ht].ga+=ga;S[gr][at].ga+=gh;
-    if(gh>ga){S[gr][ht].w++;S[gr][ht].pts+=3;S[gr][at].l++;}
-    else if(gh<ga){S[gr][at].w++;S[gr][at].pts+=3;S[gr][ht].l++;}
-    else{S[gr][ht].d++;S[gr][at].d++;S[gr][ht].pts++;S[gr][at].pts++;}
+  __DATA.rating.forEach(function(m){
+    if(!m.actual_score)return;var p=m.actual_score.split("-");if(p.length!=2)return;
+    var gh=parseInt(p[0],10),ga=parseInt(p[1],10);
+    var gr=null;gk.forEach(function(g){if(GR[g].indexOf(m.home)>=0||GR[g].indexOf(m.away)>=0)gr=g;});
+    if(!gr||!S[gr][m.home]||!S[gr][m.away])return;
+    S[gr][m.home].mp++;S[gr][m.away].mp++;S[gr][m.home].gf+=gh;S[gr][m.away].gf+=ga;
+    S[gr][m.home].ga+=ga;S[gr][m.away].ga+=gh;
+    if(gh>ga){S[gr][m.home].w++;S[gr][m.home].pts+=3;S[gr][m.away].l++;}
+    else if(gh<ga){S[gr][m.away].w++;S[gr][m.away].pts+=3;S[gr][m.home].l++;}
+    else{S[gr][m.home].d++;S[gr][m.away].d++;S[gr][m.home].pts++;S[gr][m.away].pts++;}
   });
   gk.forEach(function(g){Object.keys(S[g]).forEach(function(t){S[g][t].gd=S[g][t].gf-S[g][t].ga;});});
   var h='<div class="section-title">🏆 小组积分榜 (12组)</div>';
