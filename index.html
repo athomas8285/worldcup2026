@@ -1,0 +1,1475 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>V3.3.3 首页 — 世界杯专版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--surface3:#171d35;--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff;--mono:"SF Mono","Cascadia Code","Consolas",monospace}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+.app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
+.ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
+.hr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);padding:4px 10px;border:1px solid rgba(0,229,255,.12);border-radius:16px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;box-shadow:0 0 6px rgba(0,230,118,.4)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.content{flex:1;overflow-y:auto;padding:0 0 72px}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-thumb{background:rgba(0,229,255,.08)}
+.hm{padding:16px}
+.btn-row{display:flex;gap:10px;margin-bottom:16px}
+.btn{flex:1;padding:16px 8px;border-radius:14px;text-align:center;cursor:pointer;font-family:inherit;transition:all .15s;border:none;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15)}
+.btn:active{transform:scale(.96)}
+.btn-icon{font-size:26px;margin-bottom:5px}
+.btn-label{font-size:14px;font-weight:600;color:var(--t1)}
+.btn-desc{font-size:10px;color:var(--t3);margin-top:2px}
+.btn.st{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.15)}
+.btn.active{background:rgba(0,229,255,.12)!important;border-color:rgba(0,229,255,.35)!important}
+.btn.st.active{background:rgba(251,191,36,.12)!important;border-color:rgba(251,191,36,.35)!important}
+.default-view{transition:all .3s}
+.default-view.hidden{display:none}
+.countdown-wrap{text-align:center;padding:10px 0 14px}
+.cdl{font-size:10px;color:var(--t3);letter-spacing:4px;font-weight:500;margin-bottom:14px}
+.cdl span{color:var(--gold);background:rgba(251,191,36,.1);padding:3px 14px;border-radius:14px;border:1px solid rgba(251,191,36,.15)}
+.ck{display:flex;align-items:center;justify-content:center;gap:4px}
+.cu{display:flex;flex-direction:column;align-items:center;min-width:56px;padding:10px 6px;border-radius:10px;background:rgba(8,11,20,.4);backdrop-filter:blur(8px);border:1px solid rgba(0,229,255,.06)}
+.cd{font-size:34px;font-weight:700;font-family:var(--mono);color:#fff;line-height:1.1;letter-spacing:2px}
+.cd.c1{color:var(--cyan);text-shadow:0 0 20px rgba(0,229,255,.3)}
+.cd.c2{color:var(--green);text-shadow:0 0 20px rgba(0,230,118,.3)}
+.cd.c3{color:var(--gold);text-shadow:0 0 20px rgba(251,191,36,.3)}
+.cl{font-size:8px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-top:4px;font-weight:600}
+.cs{font-size:26px;font-weight:200;color:rgba(148,163,184,.15);font-family:var(--mono);line-height:1;padding:0 2px;margin-top:-4px}
+.nm{padding:18px;border-radius:14px;background:var(--surface);border:1px solid rgba(0,229,255,.08);backdrop-filter:blur(16px);margin-top:4px}
+.nml{text-align:center;font-size:9px;color:var(--t3);letter-spacing:3px;font-weight:600;margin-bottom:14px}
+.nmt{display:flex;align-items:center;justify-content:center;gap:16px}
+.nmc{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+.nmf{width:52px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 12px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)}
+.nmn{font-size:16px;font-weight:700;color:var(--t1)}
+.nmv{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);font-size:12px;font-weight:800;color:var(--cyan);flex-shrink:0}
+.nmi{text-align:center;margin-top:12px;font-size:11px;color:var(--t3);padding-top:10px;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:center;gap:16px}
+.switch-view{display:none}
+.switch-view.show{display:block}
+.section-title{padding:10px 0 6px;font-size:13px;font-weight:600;color:var(--t2)}
+.standings-group{margin:0 0 10px;border-radius:10px;background:var(--surface);border:1px solid rgba(0,229,255,.06);overflow:hidden}
+.standings-header{padding:10px 12px 6px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;font-weight:700;color:var(--gold);display:flex;justify-content:space-between}
+.standings-header .sub{font-size:10px;color:var(--t3);font-weight:400}
+.st-table{width:100%;border-collapse:collapse;font-size:11px}
+.st-table th{padding:6px 2px 4px;font-size:9px;color:var(--t3);font-weight:600;text-align:center;border-bottom:1px solid rgba(255,255,255,.04)}
+.st-table td{padding:6px 2px;text-align:center;border-bottom:1px solid rgba(255,255,255,.02);color:var(--t2)}
+.st-table .tc{text-align:left;padding-left:4px;font-weight:600;color:var(--t1);font-size:12px}
+.st-table .pc{font-weight:700;color:var(--t1)}
+.st-table .r1 td{background:rgba(0,230,118,.04)}
+.st-table .r2 td{background:rgba(0,229,255,.03)}
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(12,16,33,.8);backdrop-filter:blur(16px);border-top:1px solid rgba(0,229,255,.06);display:flex;padding:6px 0;padding-bottom:env(safe-area-inset-bottom,6px);z-index:100}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;color:var(--t3);border:none;background:none;font-family:inherit;transition:color .15s}
+.tab-item.active{color:var(--cyan)}
+.tab-item .tab-icon{font-size:20px}.tab-item .tab-label{font-size:10px}
+.tab-item.active .tab-label{font-weight:600}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--surface3:#171d35;--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff;--mono:"SF Mono","Cascadia Code","Consolas",monospace}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+.app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
+.ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
+.hr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);padding:4px 10px;border:1px solid rgba(0,229,255,.12);border-radius:16px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;box-shadow:0 0 6px rgba(0,230,118,.4)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.content{flex:1;overflow-y:auto;padding:0 0 72px}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.08)}
+/* Date bar */
+.db-wrap{overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:10px 0 6px;border-bottom:1px solid rgba(0,229,255,.06);-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;position:sticky;top:0;z-index:10;background:#080b14 url("app背景图.png") center/cover fixed no-repeat}
+.db-wrap::-webkit-scrollbar{display:none}
+.db-inner{display:inline-flex;gap:4px;padding:0 12px}
+.db-item{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:10px;cursor:pointer;min-width:64px;text-align:center;font-family:inherit;border:none;background:var(--surface);border:1px solid transparent;transition:all .15s}
+.db-item:active{transform:scale(.95)}
+.db-item.today{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.3)}
+.db-item.today .db-day{color:var(--cyan);font-weight:700}
+.db-item.today .db-wd{color:var(--cyan)}
+.db-item.active{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.2)}
+.db-day{font-size:15px;font-weight:600;color:var(--t2)}
+.db-wd{font-size:10px;color:var(--t3)}
+.db-badge{font-size:8px;padding:1px 6px;border-radius:6px;background:var(--cyan);color:#080b14;font-weight:700;margin-top:1px}
+/* Stats bar */
+.sb{display:flex;gap:8px;padding:10px 16px;background:rgba(8,11,20,.6);border-bottom:1px solid rgba(0,229,255,.04)}
+.sc{flex:1;padding:8px 4px;border-radius:8px;background:var(--surface);border:1px solid rgba(0,229,255,.04);text-align:center}
+.sn{font-size:18px;font-weight:700}
+.sl{font-size:8px;color:var(--t3);margin-top:2px;font-weight:500}
+/* Match cards */
+.ma{padding:12px 16px}
+.mr{margin:0 0 8px;border-radius:10px;background:var(--surface);border:1px solid rgba(0,229,255,.06);overflow:hidden;cursor:pointer;transition:all .2s}
+.mr:active{transform:scale(.98)}
+/* Card header - always visible */
+.mh{padding:12px;display:flex;align-items:center;gap:10px}
+.mc-info{flex:1;min-width:0}
+.mc-line1{font-size:10px;color:var(--t3);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.mc-teams{display:flex;align-items:center;gap:6px;margin:3px 0;flex-wrap:wrap}
+.mc-teams span{font-size:14px;font-weight:600;display:flex;align-items:center;gap:3px}
+.mc-vs{font-size:10px;color:var(--t3);margin:0 2px}
+.mc-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.mc-tag{font-size:9px;padding:2px 6px;border-radius:4px;background:var(--surface2);color:var(--t2)}
+.mc-tag.B{background:rgba(0,229,255,.12);color:var(--cyan);font-weight:600}
+.mc-tag.C{background:rgba(251,191,36,.12);color:var(--gold);font-weight:600}
+.mc-tag.dir{background:rgba(0,230,118,.1);color:var(--green)}
+.mc-tag.lose{background:rgba(239,83,80,.1);color:var(--red)}
+.mc-tag.melt{color:var(--red)!important;background:rgba(239,83,80,.08)}
+.mc-arrow{font-size:14px;color:var(--t3);flex-shrink:0;width:16px;text-align:center;transition:transform .3s}
+.mr.exp .mc-arrow{transform:rotate(180deg)}
+/* Card body - expandable */
+.mb{max-height:0;overflow:hidden;transition:max-height .4s,opacity .3s;opacity:0}
+.mb-inner{padding:0 12px 12px;border-top:1px solid rgba(255,255,255,.04)}
+.mb-inner > div{margin-top:8px}
+.pb-title{font-size:10px;color:var(--t3);margin-bottom:5px;font-weight:600}
+.br{margin:4px 0;display:flex;align-items:center;gap:6px;font-size:11px}
+.bl{width:36px;color:var(--t2);flex-shrink:0;font-weight:500;font-size:10px}
+.bt{flex:1;height:6px;border-radius:3px;background:var(--surface3);overflow:hidden}
+.bf{height:100%;border-radius:3px}
+.bv{width:34px;text-align:right;font-weight:700;font-size:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.gi{padding:6px;border-radius:5px;background:var(--surface2);text-align:center}
+.gl{font-size:8px;color:var(--t3);margin-bottom:1px}
+.gv{font-size:11px;font-weight:600}
+.gvh{color:var(--cyan)}
+.na{padding:6px 8px;border-radius:5px;background:var(--surface2);font-size:10px;color:var(--t2);line-height:1.5;border-left:2px solid var(--cyan)}
+.mr.exp .mb{max-height:800px;opacity:1}
+/* Result card - no expansion needed */
+.mr.result-card{cursor:pointer;border-color:rgba(0,229,255,.04)}
+.result-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.result-badge.hit{background:rgba(0,230,118,.12);color:var(--green)}
+.result-badge.miss{background:rgba(239,83,80,.1);color:var(--red)}
+.result-score{font-size:15px;font-weight:800;font-family:var(--mono);color:var(--t1);margin-left:auto;flex-shrink:0}
+/* Result comparison rows */
+.cmp-row{display:flex;align-items:center;gap:6px;padding:6px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.cmp-row:last-child{border:none}
+.cmp-lbl{width:44px;color:var(--t3);flex-shrink:0;font-size:10px}
+.cmp-val{font-weight:600}
+.cmp-val.hit{color:var(--green)}
+.cmp-val.miss{color:var(--red)}
+.cmp-icon{font-size:13px;margin-left:2px}
+.cmp-actual{font-size:10px;color:var(--t3);margin-left:auto}
+/* Empty state */
+.empty-state{padding:40px 20px;text-align:center;color:var(--t3)}
+.empty-state .ei{font-size:36px;margin-bottom:10px}
+.empty-state .et{font-size:14px;color:var(--t2)}
+.empty-state .ed{font-size:11px;margin-top:4px}
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(12,16,33,.8);backdrop-filter:blur(16px);border-top:1px solid rgba(0,229,255,.06);display:flex;padding:6px 0;padding-bottom:env(safe-area-inset-bottom,6px);z-index:100}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;color:var(--t3);border:none;background:none;font-family:inherit;transition:color .15s}
+.tab-item.active{color:var(--cyan)}
+.tab-item .tab-icon{font-size:20px}.tab-item .tab-label{font-size:10px}
+.tab-item.active .tab-label{font-weight:600}
+*{margin:0;padding:0;box-sizing:border-box}
+.app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+:root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
+.ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
+.hr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);padding:4px 10px;border:1px solid rgba(0,229,255,.12);border-radius:16px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;box-shadow:0 0 6px rgba(0,230,118,.4)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.content{flex:1;overflow-y:auto;padding:12px 16px 72px}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.08)}
+a.article-card,a.article-card:active,a.article-card:hover{display:block;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+a.article-card:active{transform:scale(.98)}
+a.article-card:hover{border-color:rgba(0,229,255,.2)}
+.article-card{background:var(--surface);border:1px solid rgba(0,229,255,.06);border-radius:10px;padding:14px;margin-bottom:10px}
+.article-date{font-size:10px;color:var(--t3);margin-bottom:6px}
+.article-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:6px;line-height:1.4}
+.article-summary{font-size:11px;color:var(--t2);line-height:1.5;margin-bottom:8px}
+.article-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.article-meta .article-views{font-size:10px;color:var(--t3)}
+.viewer-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;display:none;flex-direction:column}
+.viewer-overlay.active{display:flex}
+.viewer-header{display:flex;align-items:center;padding:10px 16px;background:rgba(8,11,20,.95);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
+.viewer-close{font-size:22px;cursor:pointer;color:var(--t2);padding:4px 8px;border:none;background:none;font-family:inherit;line-height:1}
+.viewer-close:active{color:var(--t1)}
+.viewer-title{flex:1;font-size:13px;color:var(--t1);margin:0 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer-frame{flex:1;border:none;width:100%;height:100%}
+.viewer-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--t3);font-size:13px}
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(12,16,33,.8);backdrop-filter:blur(16px);border-top:1px solid rgba(0,229,255,.06);display:flex;padding:6px 0;padding-bottom:env(safe-area-inset-bottom,6px);z-index:100}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;color:var(--t3);border:none;background:none;font-family:inherit;transition:color .15s}
+.tab-item.active{color:var(--cyan)}
+.tab-item .tab-icon{font-size:20px}.tab-item .tab-label{font-size:10px}
+.tab-item.active .tab-label{font-weight:600}
+/* Pinned card */
+.pinned-card{background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(251,191,36,.02));border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:14px;margin-bottom:12px;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
+.pinned-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(251,191,36,.6),rgba(251,191,36,.1))}
+.pinned-card:active{transform:scale(.98)}
+.pinned-card:hover{border-color:rgba(251,191,36,.4)}
+.pinned-badge{display:inline-block;font-size:9px;font-weight:700;color:#080b14;background:#fbbf24;border-radius:3px;padding:2px 6px;margin-bottom:6px;letter-spacing:.5px}
+/* Section separator */
+.spacer{height:2px;background:rgba(255,255,255,.03);margin:4px 0 10px;border-radius:1px}
+.section-label{font-size:10px;color:var(--t3);padding:12px 0 6px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+/* Inline reader for pinned article */
+.viewer-inline-content{flex:1;overflow-y:auto;padding:20px 18px;display:none}
+.pinned-article-inner{max-width:100%}
+.pinned-article-inner .pinned-section{margin-bottom:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+.app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+:root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#080b14 url("app背景图.png") center/cover fixed no-repeat;color:var(--t1);-webkit-font-smoothing:antialiased;overflow:hidden}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(8,11,20,.4);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
+.ht{font-size:17px;font-weight:700;color:var(--cyan)}.ht .sub{color:var(--gold);font-weight:600;margin-left:6px}
+.hr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);padding:4px 10px;border:1px solid rgba(0,229,255,.12);border-radius:16px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;box-shadow:0 0 6px rgba(0,230,118,.4)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.content{flex:1;overflow-y:auto;padding:16px 16px 72px}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.08)}
+/* Section */
+.section-title{font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin:20px 0 10px 0}
+.section-title:first-of-type{margin-top:0}
+.card{background:var(--surface);border:1px solid rgba(0,229,255,.06);border-radius:8px;padding:14px;margin-bottom:10px}
+/* Source list */
+.source-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.source-item+.source-item{border-top:1px solid rgba(255,255,255,.04)}
+.source-info{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t1)}
+.source-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.source-dot.on{background:var(--green);box-shadow:0 0 6px rgba(0,230,118,.4)}
+.source-desc{font-size:10px;color:var(--t3);margin-left:auto;padding-left:12px}
+/* Guide */
+.guide-item{display:flex;gap:12px;padding:12px 0;align-items:flex-start}
+.guide-item+.guide-item{border-top:1px solid rgba(255,255,255,.04)}
+.guide-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center;margin-top:1px}
+.guide-text{flex:1}
+.guide-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.guide-desc{font-size:11px;color:var(--t2);line-height:1.5}
+/* Contact button */
+.contact-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:1px solid rgba(0,229,255,.15);border-radius:8px;background:rgba(0,229,255,.04);color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s;margin-top:4px}
+.contact-btn:active{background:rgba(0,229,255,.1)}
+/* About system */
+.about-text{font-size:12px;color:var(--t2);line-height:1.7;margin-bottom:10px}
+.about-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--cyan);text-decoration:none;padding:6px 0;cursor:pointer}
+.about-link:active{opacity:.6}
+/* QR Overlay */
+.qr-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.qr-overlay.active{display:flex}
+.qr-modal{background:var(--surface);border:1px solid rgba(0,229,255,.1);border-radius:14px;padding:28px 24px 20px;text-align:center;max-width:300px;width:90%}
+.qr-modal h3{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.qr-modal p{font-size:11px;color:var(--t2);margin-bottom:16px}
+.qr-image{width:200px;height:200px;margin:0 auto 14px;border-radius:8px;background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(0,229,255,.02));border:2px dashed rgba(0,229,255,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--t3);font-size:11px}
+.qr-image .qr-icon{font-size:32px;margin-bottom:2px}
+.qr-close{display:inline-block;padding:8px 28px;border:1px solid rgba(255,255,255,.08);border-radius:6px;background:rgba(255,255,255,.03);color:var(--t2);font-size:12px;cursor:pointer;font-family:inherit;margin-top:4px}
+.qr-close:active{background:rgba(255,255,255,.06)}
+/* Footer */
+.footer{text-align:center;padding:20px 0 4px;font-size:9px;color:var(--t3);line-height:1.6}
+/* Tab bar */
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(12,16,33,.8);backdrop-filter:blur(16px);border-top:1px solid rgba(0,229,255,.06);display:flex;padding:6px 0;padding-bottom:env(safe-area-inset-bottom,6px);z-index:100}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;color:var(--t3);border:none;background:none;font-family:inherit;transition:color .15s}
+.tab-item.active{color:var(--cyan)}
+.tab-item .tab-icon{font-size:20px}.tab-item .tab-label{font-size:10px}
+.tab-item.active .tab-label{font-weight:600}
+</style>
+</head>
+<body>
+<div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#080b14;display:flex;align-items:center;justify-content:center;z-index:9999;color:#00e5ff;font-size:16px">加载中...</div>
+<div class="app page" id="pageHome">
+<div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
+<div class="content">
+<div class="hm">
+<div class="btn-row">
+<button class="btn" id="b1" onclick="showSched()"><div class="btn-icon">📅</div><div class="btn-label">小组赛程</div><div class="btn-desc">今日起赛程列表</div></button>
+<button class="btn st" id="b2" onclick="showStand()"><div class="btn-icon">🏆</div><div class="btn-label">小组积分榜</div><div class="btn-desc">12组排名实时更新</div></button>
+</div>
+<div class="default-view" id="dv">
+<div class="countdown-wrap" id="countdownSection">
+<div class="cdl"><span>距离下一场比赛</span></div>
+<div class="ck">
+<div class="cu"><div class="cd c1" id="cdD">02</div><div class="cl">DAYS</div></div><div class="cs">:</div>
+<div class="cu"><div class="cd" id="cdH">14</div><div class="cl">HOURS</div></div><div class="cs">:</div>
+<div class="cu"><div class="cd c3" id="cdM">38</div><div class="cl">MIN</div></div><div class="cs">:</div>
+<div class="cu"><div class="cd c2" id="cdS">22</div><div class="cl">SEC</div></div>
+<div id="matchInfo" style="display:none"></div></div></div>
+<div class="nm">
+<div class="nml" id="matchGroup">E组 · 休斯敦</div>
+<div class="nmt">
+<div class="nmc"><div class="nmf" style="background:linear-gradient(135deg,#000,#d00)" id="homeFlag">🇩🇪</div><div class="nmn" id="homeName">德国</div></div>
+<div class="nmv">VS</div>
+<div class="nmc"><div class="nmf" style="background:linear-gradient(135deg,#003399,#ff6600)" id="awayFlag">🇨🇼</div><div class="nmn" id="awayName">库拉索</div></div>
+</div>
+<div class="nmi"><span id="matchTime">⏱ 6月15日 01:00</span><span id="matchVenue">📍 休斯敦</span></div>
+</div></div>
+<div class="switch-view" id="sv"></div>
+</div></div>
+<div class="tab-bar">
+<button class="tab-item active" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔</span><span class="tab-label">首页</span></button>
+<button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
+</div></div>
+<script>
+var WM=[
+{d:"6月12日",t:"03:00",g:"A",h:"墨西哥",a:"南非",v:"墨西哥城",s:"2-0"},
+{d:"6月12日",t:"10:00",g:"A",h:"韩国",a:"捷克",v:"瓜达拉哈拉",s:"2-1"},
+{d:"6月13日",t:"03:00",g:"B",h:"加拿大",a:"波黑",v:"多伦多",s:"1-1"},
+{d:"6月13日",t:"09:00",g:"D",h:"美国",a:"巴拉圭",v:"洛杉矶",s:"4-1"},
+{d:"6月14日",t:"03:00",g:"B",h:"卡塔尔",a:"瑞士",v:"旧金山湾区",s:"1-1"},
+{d:"6月14日",t:"06:00",g:"C",h:"巴西",a:"摩洛哥",v:"纽约/新泽西",s:"1-1"},
+{d:"6月14日",t:"09:00",g:"C",h:"海地",a:"苏格兰",v:"波士顿",s:"0-1"},
+{d:"6月14日",t:"12:00",g:"D",h:"奥大利亚",a:"土耳其",v:"温哥华",s:"2-0"},
+{d:"6月15日",t:"01:00",g:"E",h:"德国",a:"库拉索",v:"休斯敦",s:""},
+{d:"6月15日",t:"04:00",g:"F",h:"荷兰",a:"日本",v:"达拉斯",s:""},
+{d:"6月15日",t:"07:00",g:"E",h:"科特迪瓦",a:"厄瓜多尔",v:"费城",s:""},
+{d:"6月15日",t:"10:00",g:"F",h:"瑞典",a:"突尼斯",v:"蒙特雷",s:""},
+{d:"6月16日",t:"00:00",g:"H",h:"西班牙",a:"佛得角",v:"亚特兰大",s:""},
+{d:"6月16日",t:"03:00",g:"G",h:"比利时",a:"埃及",v:"西雅图",s:""},
+{d:"6月16日",t:"06:00",g:"H",h:"沙特",a:"乌拉圭",v:"迈阿密",s:""},
+{d:"6月16日",t:"09:00",g:"G",h:"伊朗",a:"新西兰",v:"洛杉矶",s:""},
+{d:"6月17日",t:"03:00",g:"I",h:"法国",a:"塞内加尔",v:"纽约/新泽西",s:""},
+{d:"6月17日",t:"06:00",g:"I",h:"伊拉克",a:"挪威",v:"波士顿",s:""},
+{d:"6月17日",t:"09:00",g:"J",h:"阿根廷",a:"阿尔及利亚",v:"堪萨斯城",s:""},
+{d:"6月17日",t:"12:00",g:"J",h:"奥地利",a:"约旦",v:"旧金山湾区",s:""},
+{d:"6月18日",t:"01:00",g:"K",h:"葡萄牙",a:"民主刚果",v:"休斯敦",s:""},
+{d:"6月18日",t:"04:00",g:"L",h:"英格兰",a:"克罗地亚",v:"达拉斯",s:""},
+{d:"6月18日",t:"07:00",g:"L",h:"加纳",a:"巴拿马",v:"多伦多",s:""},
+{d:"6月18日",t:"10:00",g:"K",h:"乌兹别克斯坦",a:"哥伦比亚",v:"墨西哥城",s:""},
+{d:"6月19日",t:"00:00",g:"A",h:"捷克",a:"南非",v:"亚特兰大",s:""},
+{d:"6月19日",t:"03:00",g:"B",h:"瑞士",a:"波黑",v:"洛杉矶",s:""},
+{d:"6月19日",t:"06:00",g:"B",h:"加拿大",a:"卡塔尔",v:"温哥华",s:""},
+{d:"6月19日",t:"09:00",g:"A",h:"墨西哥",a:"韩国",v:"瓜达拉哈拉",s:""},
+{d:"6月20日",t:"03:00",g:"D",h:"美国",a:"奥大利亚",v:"西雅图",s:""},
+{d:"6月20日",t:"06:00",g:"C",h:"苏格兰",a:"摩洛哥",v:"波士顿",s:""},
+{d:"6月20日",t:"09:00",g:"C",h:"巴西",a:"海地",v:"费城",s:""},
+{d:"6月20日",t:"12:00",g:"D",h:"土耳其",a:"巴拉圭",v:"蒙特雷",s:""},
+{d:"6月21日",t:"01:00",g:"F",h:"荷兰",a:"瑞典",v:"休斯敦",s:""},
+{d:"6月21日",t:"04:00",g:"E",h:"德国",a:"科特迪瓦",v:"多伦多",s:""},
+{d:"6月21日",t:"08:00",g:"E",h:"厄瓜多尔",a:"库拉索",v:"堪萨斯城",s:""},
+{d:"6月21日",t:"12:00",g:"F",h:"突尼斯",a:"日本",v:"蒙特雷",s:""},
+{d:"6月22日",t:"00:00",g:"H",h:"西班牙",a:"沙特",v:"亚特兰大",s:""},
+{d:"6月22日",t:"03:00",g:"G",h:"比利时",a:"伊朗",v:"洛杉矶",s:""},
+{d:"6月22日",t:"06:00",g:"H",h:"乌拉圭",a:"佛得角",v:"迈阿密",s:""},
+{d:"6月22日",t:"09:00",g:"G",h:"新西兰",a:"埃及",v:"温哥华",s:""},
+{d:"6月23日",t:"01:00",g:"J",h:"阿根廷",a:"奥地利",v:"达拉斯",s:""},
+{d:"6月23日",t:"05:00",g:"I",h:"法国",a:"伊拉克",v:"费城",s:""},
+{d:"6月23日",t:"08:00",g:"I",h:"挪威",a:"塞内加尔",v:"纽约/新泽西",s:""},
+{d:"6月23日",t:"11:00",g:"J",h:"约旦",a:"阿尔及利亚",v:"堪萨斯城",s:""},
+{d:"6月24日",t:"01:00",g:"K",h:"葡萄牙",a:"乌兹别克斯坦",v:"休斯敦",s:""},
+{d:"6月24日",t:"04:00",g:"L",h:"英格兰",a:"加纳",v:"波士顿",s:""},
+{d:"6月24日",t:"07:00",g:"L",h:"巴拿马",a:"克罗地亚",v:"多伦多",s:""},
+{d:"6月24日",t:"10:00",g:"K",h:"哥伦比亚",a:"民主刚果",v:"墨西哥城",s:""},
+{d:"6月25日",t:"03:00",g:"B",h:"瑞士",a:"加拿大",v:"温哥华",s:""},
+{d:"6月25日",t:"03:00",g:"B",h:"波黑",a:"卡塔尔",v:"西雅图",s:""},
+{d:"6月25日",t:"06:00",g:"A",h:"韩国",a:"墨西哥",v:"洛杉矶",s:""},
+{d:"6月25日",t:"06:00",g:"A",h:"南非",a:"捷克",v:"亚特兰大",s:""}];
+var FL = {"墨西哥":"🇲🇽","南非":"🇿🇦","韩国":"🇰🇷","捷克":"🇨🇿","加拿大":"🇨🇦","波黑":"🇧🇦","美国":"🇺🇸","巴拉圭":"🇵🇾","卡塔尔":"🇶🇦","瑞士":"🇨🇭","巴西":"🇧🇷","摩洛哥":"🇲🇦","海地":"🇭🇹","苏格兰":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","奥大利亚":"🇦🇺","土耳其":"🇹🇷","德国":"🇩🇪","库拉索":"🇨🇼","荷兰":"🇳🇱","日本":"🇯🇵","科特迪瓦":"🇨🇮","厄瓜多尔":"🇪🇨","瑞典":"🇸🇪","突尼斯":"🇹🇳","西班牙":"🇪🇸","佛得角":"🇨🇻","比利时":"🇧🇪","埃及":"🇪🇬","沙特":"🇸🇦","乌拉圭":"🇺🇾","伊朗":"🇮🇷","新西兰":"🇳🇿","法国":"🇫🇷","塞内加尔":"🇸🇳","伊拉克":"🇮🇶","挪威":"🇳🇴","阿根廷":"🇦🇷","阿尔及利亚":"🇩🇿","奥地利":"🇦🇹","约旦":"🇯🇴","葡萄牙":"🇵🇹","民主刚果":"🇨🇩","英格兰":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","克罗地亚":"🇭🇷","加纳":"🇬🇭","巴拿马":"🇵🇦","乌兹别克斯坦":"🇺🇿","哥伦比亚":"🇨🇴"};
+var GR = {A:["墨西哥","捷克","韩国","南非"],B:["加拿大","瑞士","卡塔尔","波黑"],C:["巴西","摩洛哥","苏格兰","海地"],D:["美国","巴拉圭","奥大利亚","土耳其"],E:["德国","科特迪瓦","厄瓜多尔","库拉索"],F:["荷兰","瑞典","日本","突尼斯"],G:["比利时","伊朗","新西兰","埃及"],H:["西班牙","沙特","乌拉圭","佛得角"],I:["法国","伊拉克","挪威","塞内加尔"],J:["阿根廷","奥地利","约旦","阿尔及利亚"],K:["葡萄牙","乌兹别克斯坦","哥伦比亚","民主刚果"],L:["英格兰","加纳","巴拿马","克罗地亚"]};
+function fl(n){return FL[n]||"🏴"}
+function ucd(){
+  var n=new Date(),t=new Date(2026,5,15,1,0,0),d=t-n;if(d<=0)return;
+  document.getElementById("cdD").textContent=String(Math.floor(d/86400000)).padStart(2,"0");
+  document.getElementById("cdH").textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,"0");
+  document.getElementById("cdM").textContent=String(Math.floor((d%3600000)/60000)).padStart(2,"0");
+  document.getElementById("cdS").textContent=String(Math.floor((d%60000)/1000)).padStart(2,"0");
+}
+ucd();setInterval(ucd,1000);
+function renderSchedule(){
+  var now=new Date();now.setHours(0,0,0,0);
+  var tm=now.getMonth()+1,td=now.getDate();
+  var gr={};
+  WM.forEach(function(m){
+    var p=m.d.split("月"),mon=parseInt(p[0],10),day=parseInt(p[1],10);
+    if(mon<tm||(mon===tm&&day<td))return;
+    if(!gr[m.d])gr[m.d]=[];
+    gr[m.d].push(m);
+  });
+  var h="",keys=Object.keys(gr).sort();
+  keys.forEach(function(dk){
+    var p=dk.split("月"),mon=parseInt(p[0],10),day=parseInt(p[1],10);
+    var isT=mon===tm&&day===td;
+    var c=isT?"var(--cyan)":"var(--t2)";
+    h+='<div style="margin-bottom:8px">';
+    h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 0 5px">';
+    h+='<span style="font-size:13px;font-weight:600;color:'+c+'">'+dk+'</span>';
+    if(isT)h+='<span style="font-size:8px;background:var(--cyan);color:#080b14;padding:1px 6px;border-radius:4px;font-weight:700">今天</span>';
+    h+='<span style="flex:1;height:1px;background:'+(isT?"rgba(0,229,255,.12)":"rgba(255,255,255,.04)")+'"></span>';
+    h+='<span style="font-size:9px;color:var(--t3)">'+gr[dk].length+'场</span></div>';
+    gr[dk].forEach(function(m){
+      h+='<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;margin:2px 0;border-radius:6px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);font-size:12px">';
+      h+='<span style="font-family:var(--mono);font-size:11px;color:var(--t3);width:38px;flex-shrink:0;text-align:center">'+m.t.slice(0,5)+'</span>';
+      h+='<span style="font-size:9px;color:var(--gold);background:rgba(251,191,36,.1);padding:1px 5px;border-radius:3px;flex-shrink:0">'+m.g+'组</span>';
+      h+='<span style="flex:1;text-align:right;font-weight:600;color:var(--t1)">'+fl(m.h)+" "+m.h+'</span>';
+      h+='<span style="font-size:10px;color:var(--t3);width:18px;text-align:center;flex-shrink:0">VS</span>';
+      h+='<span style="flex:1;font-weight:600;color:var(--t1)">'+fl(m.a)+" "+m.a+'</span>';
+      h+="</div>";
+    });
+    h+="</div>";
+  });
+  document.getElementById("sv").innerHTML=h;
+}
+function renderStand(){
+  var gk=Object.keys(GR),S={};
+  gk.forEach(function(g){S[g]={};GR[g].forEach(function(t){S[g][t]={mp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0};});});
+  WM.forEach(function(m){
+    if(!m.s)return;var p=m.s.split("-");if(p.length!=2)return;
+    var gh=parseInt(p[0],10),ga=parseInt(p[1],10),gr=m.g,ht=m.h,at=m.a;
+    if(!S[gr]||!S[gr][ht]||!S[gr][at])return;
+    S[gr][ht].mp++;S[gr][at].mp++;S[gr][ht].gf+=gh;S[gr][at].gf+=ga;
+    S[gr][ht].ga+=ga;S[gr][at].ga+=gh;
+    if(gh>ga){S[gr][ht].w++;S[gr][ht].pts+=3;S[gr][at].l++;}
+    else if(gh<ga){S[gr][at].w++;S[gr][at].pts+=3;S[gr][ht].l++;}
+    else{S[gr][ht].d++;S[gr][at].d++;S[gr][ht].pts++;S[gr][at].pts++;}
+  });
+  gk.forEach(function(g){Object.keys(S[g]).forEach(function(t){S[g][t].gd=S[g][t].gf-S[g][t].ga;});});
+  var h='<div class="section-title">🏆 小组积分榜 (12组)</div>';
+  gk.forEach(function(g){
+    var sd=GR[g].slice().sort(function(a,b){
+      if(S[g][b].pts!=S[g][a].pts)return S[g][b].pts-S[g][a].pts;
+      if(S[g][b].gd!=S[g][a].gd)return S[g][b].gd-S[g][a].gd;
+      return S[g][b].gf-S[g][a].gf;
+    });
+    h+='<div class="standings-group"><div class="standings-header"><span>GROUP '+g+'</span><span class="sub">'+GR[g].length+'队</span></div><table class="st-table"><thead><tr><th>#</th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>Pts</th></tr></thead><tbody>';
+    sd.forEach(function(t,i){
+      var s=S[g][t];
+      h+='<tr class="r'+(i<2?i+1:"")+'"><td>'+(i+1)+'</td><td class="tc">'+fl(t)+t+'</td><td>'+s.mp+'</td><td>'+s.w+'</td><td>'+s.d+'</td><td>'+s.l+'</td><td>'+s.gf+'</td><td>'+s.ga+'</td><td>'+(s.gd>0?"+":"")+s.gd+'</td><td class="pc">'+s.pts+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+  });
+  document.getElementById("sv").innerHTML=h;
+}
+function showSched(){
+  document.getElementById("dv").classList.add("hidden");
+  document.getElementById("sv").classList.add("show");
+  document.getElementById("b1").classList.add("active");
+  document.getElementById("b2").classList.remove("active");
+  renderSchedule();
+}
+function showStand(){
+  document.getElementById("dv").classList.add("hidden");
+  document.getElementById("sv").classList.add("show");
+  document.getElementById("b2").classList.add("active");
+  document.getElementById("b1").classList.remove("active");
+  renderStand();
+}
+function goHome(){
+  document.getElementById("dv").classList.remove("hidden");
+  document.getElementById("sv").classList.remove("show");
+  document.getElementById("b1").classList.remove("active");
+  document.getElementById("b2").classList.remove("active");
+}
+</script>
+<div class="app page" id="page02" style="display:none">
+<div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
+<div class="db-wrap"><div class="db-inner" id="dateBar"></div></div>
+<div class="sb">
+<div class="sc" id="dateInfo"><div class="sn" style="color:var(--cyan);font-size:22px" id="dateDisplay">2026-06-14</div><div class="sl" id="matchCount">4场</div></div>
+</div>
+<div class="content"><div class="ma" id="matchArea"></div></div>
+<div class="tab-bar">
+<button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔</span><span class="tab-label">首页</span></button>
+<button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
+</div>
+</div>
+<script>
+var __DATA = null; // loaded from JSON by initApp()
+
+
+
+var FL = {"墨西哥":"🇲🇽","南非":"🇿🇦","韩国":"🇰🇷","捷克":"🇨🇿","加拿大":"🇨🇦","波黑":"🇧🇦","美国":"🇺🇸","巴拉圭":"🇵🇾","卡塔尔":"🇶🇦","瑞士":"🇨🇭","巴西":"🇧🇷","摩洛哥":"🇲🇦","海地":"🇭🇹","苏格兰":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","澳大利亚":"🇦🇺","土耳其":"🇹🇷","德国":"🇩🇪","库拉索":"🇨🇼","荷兰":"🇳🇱","日本":"🇯🇵","科特迪瓦":"🇨🇮","厄瓜多尔":"🇪🇨","瑞典":"🇸🇪","突尼斯":"🇹🇳","西班牙":"🇪🇸","佛得角":"🇨🇻","比利时":"🇧🇪","埃及":"🇪🇬","沙特阿拉伯":"🇸🇦","乌拉圭":"🇺🇾","伊朗":"🇮🇷","新西兰":"🇳🇿","法国":"🇫🇷","塞内加尔":"🇸🇳","伊拉克":"🇮🇶","挪威":"🇳🇴","阿根廷":"🇦🇷","阿尔及利亚":"🇩🇿","奥地利":"🇦🇹","约旦":"🇯🇴","葡萄牙":"🇵🇹","刚果(金)":"🇨🇩","英格兰":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","克罗地亚":"🇭🇷","加纳":"🇬🇭","巴拿马":"🇵🇦","乌兹别克斯坦":"🇺🇿","哥伦比亚":"🇨🇴"};
+function fl(n){return FL[n]||"🏴"}
+function buildDateBar(){
+  var keys = Object.keys(AL).sort();
+  var h = "";
+  var n=new Date(),ms=String(n.getMonth()+1).padStart(2,"0"),ds=String(n.getDate()).padStart(2,"0"),ts=ms+"-"+ds;
+  keys.forEach(function(k){
+    var t = k === ts;
+    h += '<div class="db-item'+(t?" today":"")+'" onclick="selectDate(\''+k+'\',this)"><span class="db-day">'+k+'</span><span class="db-wd">'+DN[k]+'</span>'+(t?'<span class="db-badge">今天</span>':"")+'</div>';
+  });
+  document.getElementById("dateBar").innerHTML = h;
+}
+function selectDate(dateKey, el){
+  document.querySelectorAll(".db-item").forEach(function(d){d.classList.remove("active");});
+  el.classList.add("active");
+  renderMatches(dateKey);
+}
+function rateClass(rating){
+  if(rating==="C") return "C";
+  return "B";
+}
+function dirClass(direction){
+  if(direction==="负"||direction==="让负") return "lose";
+  return "dir";
+}
+function renderMatches(dateKey){
+  var ids = AL[dateKey];
+  if(!ids||ids.length===0){document.getElementById("matchArea").innerHTML='<div class="empty-state"><div class="ei">📭</div><div class="et">暂无数据</div><div class="ed">该日期暂无预测记录</div></div>';return;}
+  var h = "";
+  // Compute stats for today
+  var total=0,hits=0;
+  ids.forEach(function(id){
+    var r = __DATA.rating.find(function(x){return x.id===id;});
+    if(r && r.actual_score){total++;if(r.hit)hits++;}
+  });
+  ids.forEach(function(id){
+    var r = __DATA.rating.find(function(x){return x.id===id;});
+    var mc = __DATA.mc.find(function(x){return x.id===id;});
+    var na = __DATA.narratives[id] || "";
+    if(!r) return;
+    var isCompleted = r.actual_score ? true : false;
+    if(isCompleted){
+      // Result card (expandable comparison)
+      var hitClass = r.hit ? "hit" : "miss";
+      var hitText = r.hit ? "✅ 命中" : "❌ 未中";
+      var scParts = r.actual_score.split("-");
+      var actualGoals = parseInt(scParts[0]) + parseInt(scParts[1]);
+      var goalKey = actualGoals+"球";
+      var goalsHit = mc && mc.top2_total_goals && mc.top2_total_goals.indexOf(goalKey) !== -1;
+      var hfHit = mc && mc.top2_half_full && mc.top2_half_full.indexOf(r.half_full) !== -1;
+      var scHit = mc && mc.top3_scores && mc.top3_scores.indexOf(r.actual_score) !== -1;
+      h += '<div class="mr result-card" onclick="this.classList.toggle(\'exp\')"><div class="mh"><div class="mc-info">';
+      h += '<div class="mc-line1">世界杯 · '+r.event+' · '+r.id+'</div>';
+      h += '<div class="mc-teams"><span>'+fl(r.home)+' '+r.home+'</span><span class="mc-vs">VS</span><span>'+fl(r.away)+' '+r.away+'</span></div>';
+      h += '</div><div class="result-badge '+hitClass+'">'+hitText+'</div><div class="result-score">'+r.actual_score+'</div><div class="mc-arrow">▼</div></div>';
+      h += '<div class="mb"><div class="mb-inner">';
+      h += '<div class="pb-title">预测回顾</div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">方向</span><span class="cmp-val '+hitClass+'">'+r.direction+'</span><span class="cmp-icon">'+(r.hit?'✅':'❌')+'</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">评级</span><span class="cmp-val">'+r.rating+'</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">总进球</span><span class="cmp-val '+(goalsHit?'hit':'miss')+'">'+(mc?mc.top2_total_goals.join(" / "):"--")+'</span><span class="cmp-icon">'+(goalsHit?'✅':'❌')+'</span><span class="cmp-actual">实际 '+actualGoals+'球</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">半全场</span><span class="cmp-val '+(hfHit?'hit':'miss')+'">'+(mc?mc.top2_half_full.join(" / "):"--")+'</span><span class="cmp-icon">'+(hfHit?'✅':'❌')+'</span><span class="cmp-actual">实际 '+r.half_full+'</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">比分</span><span class="cmp-val '+(scHit?'hit':'miss')+'">'+(mc?mc.top3_scores.join(" / "):"--")+'</span><span class="cmp-icon">'+(scHit?'✅':'❌')+'</span><span class="cmp-actual">实际 '+r.actual_score+'</span></div>';
+      if(na){h += '<div class="na" style="margin-top:8px">'+na+'</div>';}
+      h += '</div></div></div>';
+    }else if(!r.direction || !mc || !mc.physical){
+      // Pending card - basic info only
+      h += '<div class="mr" style="cursor:default"><div class="mh"><div class="mc-info">';
+      h += '<div class="mc-line1">世界杯 · '+r.event+'· '+r.id+'</div>';
+      h += '<div class="mc-teams"><span>'+fl(r.home)+' '+r.home+'</span><span class="mc-vs">VS</span><span>'+fl(r.away)+' '+r.away+'</span></div>';
+      h += '<div class="mc-tags"><span class="mc-tag" style="color:var(--gold)">\u23f3 \u7b49\u5f85\u9884\u6d4b\u6570\u636e</span></div>';
+      h += '</div></div></div>';
+    }else{      // Prediction card (expandable)
+      var dirCls = dirClass(r.direction);
+      var meltClass = r.meltdown ? ' mc-tag melt' : '';
+      var phys = mc ? mc.physical : {};
+      var hw = phys.home_win || 0;
+      var dr = phys.draw || 0;
+      var aw = phys.away_win || 0;
+      var tg = mc && mc.top2_total_goals ? mc.top2_total_goals.join(" / ") : "--";
+      var hf = mc && mc.top2_half_full ? mc.top2_half_full.join(" / ") : "--";
+      var ts = mc && mc.top3_scores ? mc.top3_scores[0] : "--";
+      var bk = mc && mc.top3_scores ? mc.top3_scores.slice(1).join(" / ") : "--";
+      var ld = mc ? (mc.lambda_diff > 0 ? "+"+mc.lambda_diff.toFixed(2) : mc.lambda_diff.toFixed(2)) : "--";
+      var fd = r.fit_score ? r.fit_score.toFixed(1) : "--";
+      h += '<div class="mr" onclick="this.classList.toggle(\'exp\')"><div class="mh"><div class="mc-info">';
+      h += '<div class="mc-line1">世界杯 · '+r.event+' · '+r.id+'</div>';
+      h += '<div class="mc-teams"><span>'+fl(r.home)+' '+r.home+'</span><span class="mc-vs">VS</span><span>'+fl(r.away)+' '+r.away+'</span><span class="mc-tag dir '+dirCls+'" style="margin-left:auto">'+r.direction+'</span><span class="mc-tag '+rateClass(r.rating)+'">'+r.rating+'</span></div>';
+      h += '</div><div class="mc-arrow">▼</div></div>';
+      // Expandable body
+      h += '<div class="mb"><div class="mb-inner">';
+      h += '<div><div class="pb-title">蒙特卡洛概率</div>';
+      h += '<div class="br"><span class="bl">主胜</span><div class="bt"><div class="bf" style="width:'+(hw*100).toFixed(0)+'%;background:var(--cyan)"></div></div><span class="bv" style="color:var(--cyan)">'+(hw*100).toFixed(1)+'%</span></div>';
+      h += '<div class="br"><span class="bl">平局</span><div class="bt"><div class="bf" style="width:'+(dr*100).toFixed(0)+'%;background:var(--gold)"></div></div><span class="bv" style="color:var(--gold)">'+(dr*100).toFixed(1)+'%</span></div>';
+      h += '<div class="br"><span class="bl">客胜</span><div class="bt"><div class="bf" style="width:'+(aw*100).toFixed(0)+'%;background:var(--red)"></div></div><span class="bv" style="color:var(--red)">'+(aw*100).toFixed(1)+'%</span></div></div>';
+      h += '<div class="g2"><div class="gi"><div class="gl">λ差</div><div class="gv gvh">'+ld+'</div></div><div class="gi"><div class="gl">拟合分</div><div class="gv">'+fd+'</div></div><div class="gi"><div class="gl">总进球</div><div class="gv">'+tg+'</div></div><div class="gi"><div class="gl">半全场</div><div class="gv">'+hf+'</div></div></div>';
+      h += '<div class="g2"><div class="gi"><div class="gl">最可能比分</div><div class="gv gvh">'+ts+'</div></div><div class="gi"><div class="gl">备选</div><div class="gv">'+bk+'</div></div></div>';
+      if(na){
+        h += '<div class="na">'+na+'</div>';
+      }
+      h += '</div></div></div>';
+    }
+  });
+  document.getElementById("matchArea").innerHTML = h;
+  // Update date info
+  var q = dateKey.split("-");
+  document.getElementById("dateDisplay").textContent = "2026-"+q[0]+"-"+q[1];
+  document.getElementById("matchCount").textContent = ids.length+"场";
+}
+
+// renderMatches called by switchTab after data loads
+</script>
+<div class="app page" id="page03" style="display:none">
+<div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
+<div class="content">
+<div id="newsSection"><div class="section-label">最新资讯</div>
+<a class="article-card" href="https://worldcup2026cn.com/news/20261-1-m537339/" target="_blank" rel="noopener">
+  <div class="article-date">发布时间：2026-06-14</div>
+  <div class="article-title">2026世界杯巴西1-1摩洛哥：桑巴军团遭非洲劲旅逼平</div>
+  <div class="article-summary">2026世界杯小组赛C组焦点战，巴西与摩洛哥1-1战平。桑巴军团率先破门却被非洲红狮顽强扳平，五星巴西爆冷失分。本文带来完整比赛进程、战术解析、关键球员评分与双方下一场展望，带你看懂这场势均力敌的强强对话。</div>
+  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
+</a>
+<a class="article-card" href="https://worldcup2026cn.com/news/20262-0-m537346/" target="_blank" rel="noopener">
+  <div class="article-date">发布时间：2026-06-14</div>
+  <div class="article-title">2026世界杯澳大利亚2-0土耳其：袋鼠军团完胜抢占小组先机</div>
+  <div class="article-summary">2026世界杯小组赛D组焦点战，澳大利亚凭借两个半场各下一城，以2-0完胜土耳其，拿下开门红。袋鼠军团展现出高效的防守反击与稳固的中场组织，而土耳其则在临门一脚上屡屡受阻。</div>
+  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
+</a>
+<a class="article-card" href="https://worldcup2026cn.com/news/2026-104-no-china-how-to-enjoy-worldcup-2026/" target="_blank" rel="noopener">
+  <div class="article-date">发布时间：2026-06-13</div>
+  <div class="article-title">国足又一次缺席：没有中国队的2026世界杯，我们为什么还要熬夜看104场？</div>
+  <div class="article-summary">2025年6月10日，国足在18强赛主场不敌印尼后彻底出局，第8次无缘世界杯。但CCTV5免费转播全部104场、海信蒙牛万达三家中国金主仍在场边，这届美加墨世界杯依然和你有关。</div>
+  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
+</a>
+<a class="article-card" href="https://worldcup2026cn.com/news/30-host-nations-usa-mexico-canada-tracker-2026/" target="_blank" rel="noopener">
+  <div class="article-date">发布时间：2026-06-12</div>
+  <div class="article-title">东道主诅咒还是主场福利？墨西哥30年困局与美加新势力的小组赛账本</div>
+  <div class="article-summary">2026年6月11日阿兹特克揭幕，墨西哥背着30年未进8强的包袱，美国押注波切蒂诺和普利西奇，加拿大靠戴维斯第二次踏上世界杯。三个东道主，三种命运，OPTA数据已经给出答案。</div>
+  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
+</a></div>
+</div><div id="pinnedContent" style="display:none">
+<div class="pinned-article-inner">
+<div class="pinned-section">
+<h3 style="font-size:15px;font-weight:700;color:#fbbf24;margin:0 0 12px 0;padding-bottom:10px;border-bottom:1px solid rgba(251,191,36,.15);">用数据读懂比赛，用AI推荐方向——足球AI赛事预测智能分析2026世界杯全新升级！</h3>
+<p style="font-size:11px;color:#8b95a9;margin:0 0 14px 0;padding:0;">2026 世界杯扩军至 48 队、104 场比赛，赛事复杂度远超以往。传统看球靠经验和直觉，但在信息爆炸的今天，谁掌握数据，谁就拥有更清晰的比赛视角。</p>
+<p style="font-size:12px;font-weight:600;color:#e8edf5;margin:0 0 10px 0;padding:0;">V3.3.3 足球 AI 赛事预测分析系统 正式完成 2026 世界杯升级，从数据采集到 AI 推理，为每一场比赛提供结构化、可验证的分析服务。</p>
+</div>
+<div class="pinned-section">
+<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎八大维度，构建数据底座</h4>
+<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">系统每场比赛采集超过 8 大板块数据：比赛基本信息、竞彩赔率、亚洲盘口、联赛赛季数据、近期战绩、伤停信息、战意背景、特殊事项。数据源覆盖中国竞彩网、HKJC、SofaScore 等权威渠道，确保每一组数字都有据可查。</p>
+</div>
+<div class="pinned-section">
+<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎AI 推理，输出可执行的预测方向</h4>
+<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">基于采集数据，AI 引擎从多个角度交叉验证，输出 5 项核心指标：</p>
+<ul style="font-size:11px;color:#8b95a9;line-height:1.7;margin:0 0 10px 0;padding:0 0 0 16px;">
+<li>方向预测（胜/平/负）及置信度评级（A/B/C）</li>
+<li>总进球数 区间推荐</li>
+<li>半全场 走势预判</li>
+<li>比分 概率分布</li>
+<li>赛后复盘 与预测对照，持续优化模型</li>
+</ul>
+<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">每场比赛的分析结果以三种卡片状态呈现：已完赛（可展开查看预测回顾，命中/未中一目了然）、预测中（方向+评级标签）、待预测（等待数据就绪）。</p>
+</div>
+<div class="pinned-section">
+<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎不只是预测，更是分析工具</h4>
+<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">与传统"黑盒"推荐不同，V3.3.3 强调可追溯、可复盘。每场比赛结束后，系统自动生成预测回顾面板，逐项对比方向、总进球、半全场、比分的预测结果与实际赛果——命中高亮绿色、未中标红，让每一次分析都有据可依。</p>
+</div>
+<div class="pinned-section">
+<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎2026 世界杯，数据陪你看到最后</h4>
+<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">从 6 月 11 日揭幕战到 7 月 19 日决赛，V3.3.3 将持续跟进全部 104 场比赛。无论你是否拥有数据背景，都能通过清晰的卡片界面读懂每一场比赛的 AI 分析逻辑。</p>
+</div>
+<p style="font-size:11px;color:#5a6577;margin:10px 0 0 0;padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.04);text-align:center;">用数据读懂比赛，用AI推荐方向</p>
+</div>
+</div><div class="viewer-overlay" id="viewerOverlay">
+  <div class="viewer-header">
+    <button class="viewer-close" onclick="closeArticle()">✖</button>
+    <span class="viewer-title" id="viewerTitle">文章</span>
+  </div>
+  <div class="viewer-loading" id="viewerLoading">加载中...</div>
+  <iframe class="viewer-frame" id="viewerFrame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+  <div class="viewer-inline-content" id="viewerInline"></div>
+</div>
+<div class="tab-bar">
+<button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
+<button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
+<button class="tab-item active" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
+</div>
+</div>
+<script>
+function openArticle(id){
+  var overlay = document.getElementById("viewerOverlay");
+  var loading = document.getElementById("viewerLoading");
+  var frame = document.getElementById("viewerFrame");
+  var inline = document.getElementById("viewerInline");
+  var title = document.getElementById("viewerTitle");
+  if(id === 'pinned'){
+    title.textContent = "用数据读懂比赛，用AI推荐方向";
+    frame.style.display = "none";
+    inline.style.display = "block";
+    loading.style.display = "none";
+    var content = document.getElementById("pinnedContent").innerHTML;
+    inline.innerHTML = content;
+    overlay.classList.add("active");
+  }
+}
+function closeArticle(){
+  document.getElementById("viewerOverlay").classList.remove("active");
+  var frame = document.getElementById("viewerFrame");
+  frame.src = "";
+  frame.style.display = "";
+  var inline = document.getElementById("viewerInline");
+  inline.style.display = "none";
+  inline.innerHTML = "";
+}
+</script>
+<div class="app page" id="page04" style="display:none">
+<div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
+<div class="content">
+<!-- 数据源 -->
+<div class="section-title">数据源</div>
+<div class="card">
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>中国竞彩网</div>
+    <span class="source-desc">赔率数据</span>
+  </div>
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>HKJC</div>
+    <span class="source-desc">亚洲盘口</span>
+  </div>
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>SofaScore</div>
+    <span class="source-desc">赛季数据 / 战绩</span>
+  </div>
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>worldcup2026cn</div>
+    <span class="source-desc">世界杯资讯</span>
+  </div>
+</div>
+<!-- 快速指南 -->
+<div class="section-title">快速指南</div>
+<div class="card">
+  <div class="guide-item">
+    <div class="guide-icon">✅</div>
+    <div class="guide-text">
+      <div class="guide-title">已完赛 · 预测回顾</div>
+      <div class="guide-desc">比赛结束后自动生成回顾面板，逐项对比方向、总进球、半全场、比分的预测结果与实际赛果，命中绿色、未中标红。</div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-icon">📊</div>
+    <div class="guide-text">
+      <div class="guide-title">预测中 · 实时分析</div>
+      <div class="guide-desc">比赛开始前展示 AI 预测方向及评级标签，展开可查看蒙特卡洛概率分布、进球数区间、最可能比分等详细数据。</div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-icon">⏳</div>
+    <div class="guide-text">
+      <div class="guide-title">待预测 · 等待数据</div>
+      <div class="guide-desc">数据尚未就绪的比赛，系统将在采集完成后自动生成预测分析，届时卡片状态会自动更新。</div>
+    </div>
+  </div>
+</div>
+<!-- 关于作者 -->
+<div class="section-title">关于作者</div>
+<div class="card">
+  <p class="author-bio">作者本身也是一个资深球迷，经营着一家小彩票店，平时自己也会研究方案，欢迎兄弟们加我一起聊球一起吹牛，交流看法。老李也在这里祝大家好运连连，一路长红。</p>
+  <button class="contact-btn" onclick="showQR()">💬 联系作者</button>
+</div><!-- Footer -->
+<div class="footer">
+V3.3.3 Football AI Analysis System<br>
+⚠️ 免责声明：本网站所提供的所有赛事分析及预测结果，仅供体育爱好者交流参考，不构成任何投注建议或承诺。
+</div>
+</div>
+<!-- QR Modal -->
+<div class="qr-overlay" id="qrOverlay" onclick="closeQR(event)">
+  <div class="qr-modal" onclick="event.stopPropagation()">
+    <h3>🤝 加微信聊球</h3>
+    <p>长按识别二维码，备注"聊球"通过</p>
+    <img src="店主微信.jpg?v=2" alt="微信二维码" style="width:200px;height:200px;border-radius:8px;display:block;margin:0 auto 14px">
+    <button class="qr-close" onclick="closeQR()">关闭</button>
+  </div>
+</div>
+<div class="tab-bar">
+<button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
+<button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item active" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
+</div>
+<div id="pageSettings" class="app page" style="display:none">
+<div class="content">
+<!-- 数据源 -->
+<div class="section-title">数据源</div>
+<div class="card" id="dataSources">
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>中国竞彩网</div>
+    <span class="source-desc">赔率数据</span>
+  </div>
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>HKJC</div>
+    <span class="source-desc">亚洲盘口</span>
+  </div>
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>SofaScore</div>
+    <span class="source-desc">赛季数据 / 战绩</span>
+  </div>
+  <div class="source-item">
+    <div class="source-info"><span class="source-dot on"></span>worldcup2026cn</div>
+    <span class="source-desc">世界杯资讯</span>
+  </div>
+</div>
+<!-- 快速指南 -->
+<div class="section-title">快速指南</div>
+<div class="card" id="guideSection">
+  <div class="guide-item">
+    <div class="guide-icon">✅</div>
+    <div class="guide-text">
+      <div class="guide-title">已完赛 · 预测回顾</div>
+      <div class="guide-desc">比赛结束后自动生成回顾面板，逐项对比方向、总进球、半全场、比分的预测结果与实际赛果，命中绿色、未中标红。</div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-icon">📊</div>
+    <div class="guide-text">
+      <div class="guide-title">预测中 · 实时分析</div>
+      <div class="guide-desc">比赛开始前展示 AI 预测方向及评级标签，展开可查看蒙特卡洛概率分布、进球数区间、最可能比分等详细数据。</div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-icon">⏳</div>
+    <div class="guide-text">
+      <div class="guide-title">待预测 · 等待数据</div>
+      <div class="guide-desc">数据尚未就绪的比赛，系统将在采集完成后自动生成预测分析，届时卡片状态会自动更新。</div>
+    </div>
+  </div>
+</div>
+<!-- 关于作者 -->
+<div class="section-title">关于作者</div>
+<div class="card" id="authorSection">
+  <p class="author-bio">作者本身也是一个资深球迷，经营着一家小彩票店，平时自己也会研究方案，欢迎兄弟们加我一起聊球一起吹牛，交流看法。老李也在这里祝大家好运连连，一路长红。</p>
+  <button class="contact-btn" onclick="showQR()">💬 联系作者</button>
+</div><!-- Footer -->
+<div class="footer" id="footerSection">
+V3.3.3 Football AI Analysis System<br>
+⚠️ 免责声明：本网站所提供的所有赛事分析及预测结果，仅供体育爱好者交流参考，不构成任何投注建议或承诺。
+</div>
+</div>
+<!-- QR Modal -->
+<div class="qr-overlay" id="qrOverlay" onclick="closeQR(event)">
+  <div class="qr-modal" onclick="event.stopPropagation()">
+    <h3>🤝 加微信聊球</h3>
+    <p>长按识别二维码，备注"聊球"通过</p>
+    <img src="店主微信.jpg?v=2" alt="微信二维码" style="width:200px;height:200px;border-radius:8px;display:block;margin:0 auto 14px">
+    <button class="qr-close" onclick="closeQR()">关闭</button>
+  </div>
+</div>
+<div class="tab-bar">
+<button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
+<button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item active" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
+</div>
+</div>
+<script>
+function showQR(){
+  document.getElementById("qrOverlay").classList.add("active");
+}
+function closeQR(e){
+  if(!e || e.target === e.currentTarget || !e){
+    document.getElementById("qrOverlay").classList.remove("active");
+  }
+}
+</script>
+<div class="tab-bar">
+<button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
+<button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item active" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
+
+</div>
+</div>
+<script>
+function showQR(){
+  document.getElementById("qrOverlay").classList.add("active");
+}
+function closeQR(e){
+  if(!e || e.target === e.currentTarget || !e){
+    document.getElementById("qrOverlay").classList.remove("active");
+  }
+}
+// DIAGNOSTIC: force show this immediately
+var _diag = document.getElementById('loadingOverlay');
+if(_diag) {
+  _diag.style.background = '#1a1a2e';
+  _diag.innerHTML = '<div style="padding:20px;text-align:center;color:#0f0;font-size:18px">JS_STARTED</div>';
+}
+// Override initApp to catch all errors
+var _origInit = window.initApp;
+window.initApp = async function() {
+  try {
+    if(_origInit) await _origInit();
+  } catch(e) {
+    var el = document.getElementById('loadingOverlay');
+    if(el) el.innerHTML = '<div style="padding:20px;text-align:center;color:#ff0"><div style="font-size:18px">ERR</div><div style="font-size:14px">' + e.message + '</div><div style="font-size:11px">' + (e.stack || '').slice(0,200) + '</div></div>';
+  }
+};
+var FL = {
+  "乌兹别克斯坦":"🇺🇿",
+  "乌拉圭":"🇺🇾",
+  "伊拉克":"🇮🇶",
+  "伊朗":"🇮🇷",
+  "佛得角":"🇨🇻",
+  "克罗地亚":"🇭🇷",
+  "刚果(金)":"🇨🇩",
+  "加拿大":"🇨🇦",
+  "加纳":"🇬🇭",
+  "南非":"🇿🇦",
+  "卡塔尔":"🇶🇦",
+  "厄瓜多尔":"🇪🇨",
+  "哥伦比亚":"🇨🇴",
+  "土耳其":"🇹🇷",
+  "埃及":"🇪🇬",
+  "塞内加尔":"🇸🇳",
+  "墨西哥":"🇲🇽",
+  "奥地利":"🇦🇹",
+  "巴拉圭":"🇵🇾",
+  "巴拿马":"🇵🇦",
+  "巴西":"🇧🇷",
+  "库拉索":"🇨🇼",
+  "德国":"🇩🇪",
+  "挪威":"🇳🇴",
+  "捷克":"🇨🇿",
+  "摩洛哥":"🇲🇦",
+  "新西兰":"🇳🇿",
+  "日本":"🇯🇵",
+  "比利时":"🇧🇪",
+  "沙特阿拉伯":"🇸🇦",
+  "法国":"🇫🇷",
+  "波黑":"🇧🇦",
+  "海地":"🇭🇹",
+  "澳大利亚":"🇦🇺",
+  "瑞典":"🇸🇪",
+  "瑞士":"🇨🇭",
+  "科特迪瓦":"🇨🇮",
+  "突尼斯":"🇹🇳",
+  "约旦":"🇯🇴",
+  "美国":"🇺🇸",
+  "苏格兰":"🇬🇧",
+  "英格兰":"🇬🇧",
+  "荷兰":"🇳🇱",
+  "葡萄牙":"🇵🇹",
+  "西班牙":"🇪🇸",
+  "阿尔及利亚":"🇩🇿",
+  "阿根廷":"🇦🇷",
+  "韩国":"🇰🇷"
+};
+// From page01-home
+var WM=[
+{d:"6月12日",t:"03:00",g:"A",h:"墨西哥",a:"南非",v:"墨西哥城",s:"2-0"},
+{d:"6月12日",t:"10:00",g:"A",h:"韩国",a:"捷克",v:"瓜达拉哈拉",s:"2-1"},
+{d:"6月13日",t:"03:00",g:"B",h:"加拿大",a:"波黑",v:"多伦多",s:"1-1"},
+{d:"6月13日",t:"09:00",g:"D",h:"美国",a:"巴拉圭",v:"洛杉矶",s:"4-1"},
+{d:"6月14日",t:"03:00",g:"B",h:"卡塔尔",a:"瑞士",v:"旧金山湾区",s:"1-1"},
+{d:"6月14日",t:"06:00",g:"C",h:"巴西",a:"摩洛哥",v:"纽约/新泽西",s:"1-1"},
+{d:"6月14日",t:"09:00",g:"C",h:"海地",a:"苏格兰",v:"波士顿",s:"0-1"},
+{d:"6月14日",t:"12:00",g:"D",h:"奥大利亚",a:"土耳其",v:"温哥华",s:"2-0"},
+{d:"6月15日",t:"01:00",g:"E",h:"德国",a:"库拉索",v:"休斯敦",s:""},
+{d:"6月15日",t:"04:00",g:"F",h:"荷兰",a:"日本",v:"达拉斯",s:""},
+{d:"6月15日",t:"07:00",g:"E",h:"科特迪瓦",a:"厄瓜多尔",v:"费城",s:""},
+{d:"6月15日",t:"10:00",g:"F",h:"瑞典",a:"突尼斯",v:"蒙特雷",s:""},
+{d:"6月16日",t:"00:00",g:"H",h:"西班牙",a:"佛得角",v:"亚特兰大",s:""},
+{d:"6月16日",t:"03:00",g:"G",h:"比利时",a:"埃及",v:"西雅图",s:""},
+{d:"6月16日",t:"06:00",g:"H",h:"沙特",a:"乌拉圭",v:"迈阿密",s:""},
+{d:"6月16日",t:"09:00",g:"G",h:"伊朗",a:"新西兰",v:"洛杉矶",s:""},
+{d:"6月17日",t:"03:00",g:"I",h:"法国",a:"塞内加尔",v:"纽约/新泽西",s:""},
+{d:"6月17日",t:"06:00",g:"I",h:"伊拉克",a:"挪威",v:"波士顿",s:""},
+{d:"6月17日",t:"09:00",g:"J",h:"阿根廷",a:"阿尔及利亚",v:"堪萨斯城",s:""},
+{d:"6月17日",t:"12:00",g:"J",h:"奥地利",a:"约旦",v:"旧金山湾区",s:""},
+{d:"6月18日",t:"01:00",g:"K",h:"葡萄牙",a:"民主刚果",v:"休斯敦",s:""},
+{d:"6月18日",t:"04:00",g:"L",h:"英格兰",a:"克罗地亚",v:"达拉斯",s:""},
+{d:"6月18日",t:"07:00",g:"L",h:"加纳",a:"巴拿马",v:"多伦多",s:""},
+{d:"6月18日",t:"10:00",g:"K",h:"乌兹别克斯坦",a:"哥伦比亚",v:"墨西哥城",s:""},
+{d:"6月19日",t:"00:00",g:"A",h:"捷克",a:"南非",v:"亚特兰大",s:""},
+{d:"6月19日",t:"03:00",g:"B",h:"瑞士",a:"波黑",v:"洛杉矶",s:""},
+{d:"6月19日",t:"06:00",g:"B",h:"加拿大",a:"卡塔尔",v:"温哥华",s:""},
+{d:"6月19日",t:"09:00",g:"A",h:"墨西哥",a:"韩国",v:"瓜达拉哈拉",s:""},
+{d:"6月20日",t:"03:00",g:"D",h:"美国",a:"奥大利亚",v:"西雅图",s:""},
+{d:"6月20日",t:"06:00",g:"C",h:"苏格兰",a:"摩洛哥",v:"波士顿",s:""},
+{d:"6月20日",t:"09:00",g:"C",h:"巴西",a:"海地",v:"费城",s:""},
+{d:"6月20日",t:"12:00",g:"D",h:"土耳其",a:"巴拉圭",v:"蒙特雷",s:""},
+{d:"6月21日",t:"01:00",g:"F",h:"荷兰",a:"瑞典",v:"休斯敦",s:""},
+{d:"6月21日",t:"04:00",g:"E",h:"德国",a:"科特迪瓦",v:"多伦多",s:""},
+{d:"6月21日",t:"08:00",g:"E",h:"厄瓜多尔",a:"库拉索",v:"堪萨斯城",s:""},
+{d:"6月21日",t:"12:00",g:"F",h:"突尼斯",a:"日本",v:"蒙特雷",s:""},
+{d:"6月22日",t:"00:00",g:"H",h:"西班牙",a:"沙特",v:"亚特兰大",s:""},
+{d:"6月22日",t:"03:00",g:"G",h:"比利时",a:"伊朗",v:"洛杉矶",s:""},
+{d:"6月22日",t:"06:00",g:"H",h:"乌拉圭",a:"佛得角",v:"迈阿密",s:""},
+{d:"6月22日",t:"09:00",g:"G",h:"新西兰",a:"埃及",v:"温哥华",s:""},
+{d:"6月23日",t:"01:00",g:"J",h:"阿根廷",a:"奥地利",v:"达拉斯",s:""},
+{d:"6月23日",t:"05:00",g:"I",h:"法国",a:"伊拉克",v:"费城",s:""},
+{d:"6月23日",t:"08:00",g:"I",h:"挪威",a:"塞内加尔",v:"纽约/新泽西",s:""},
+{d:"6月23日",t:"11:00",g:"J",h:"约旦",a:"阿尔及利亚",v:"堪萨斯城",s:""},
+{d:"6月24日",t:"01:00",g:"K",h:"葡萄牙",a:"乌兹别克斯坦",v:"休斯敦",s:""},
+{d:"6月24日",t:"04:00",g:"L",h:"英格兰",a:"加纳",v:"波士顿",s:""},
+{d:"6月24日",t:"07:00",g:"L",h:"巴拿马",a:"克罗地亚",v:"多伦多",s:""},
+{d:"6月24日",t:"10:00",g:"K",h:"哥伦比亚",a:"民主刚果",v:"墨西哥城",s:""},
+{d:"6月25日",t:"03:00",g:"B",h:"瑞士",a:"加拿大",v:"温哥华",s:""},
+{d:"6月25日",t:"03:00",g:"B",h:"波黑",a:"卡塔尔",v:"西雅图",s:""},
+{d:"6月25日",t:"06:00",g:"A",h:"韩国",a:"墨西哥",v:"洛杉矶",s:""},
+{d:"6月25日",t:"06:00",g:"A",h:"南非",a:"捷克",v:"亚特兰大",s:""}];
+var FL = {"墨西哥":"🇲🇽","南非":"🇿🇦","韩国":"🇰🇷","捷克":"🇨🇿","加拿大":"🇨🇦","波黑":"🇧🇦","美国":"🇺🇸","巴拉圭":"🇵🇾","卡塔尔":"🇶🇦","瑞士":"🇨🇭","巴西":"🇧🇷","摩洛哥":"🇲🇦","海地":"🇭🇹","苏格兰":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","奥大利亚":"🇦🇺","土耳其":"🇹🇷","德国":"🇩🇪","库拉索":"🇨🇼","荷兰":"🇳🇱","日本":"🇯🇵","科特迪瓦":"🇨🇮","厄瓜多尔":"🇪🇨","瑞典":"🇸🇪","突尼斯":"🇹🇳","西班牙":"🇪🇸","佛得角":"🇨🇻","比利时":"🇧🇪","埃及":"🇪🇬","沙特":"🇸🇦","乌拉圭":"🇺🇾","伊朗":"🇮🇷","新西兰":"🇳🇿","法国":"🇫🇷","塞内加尔":"🇸🇳","伊拉克":"🇮🇶","挪威":"🇳🇴","阿根廷":"🇦🇷","阿尔及利亚":"🇩🇿","奥地利":"🇦🇹","约旦":"🇯🇴","葡萄牙":"🇵🇹","民主刚果":"🇨🇩","英格兰":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","克罗地亚":"🇭🇷","加纳":"🇬🇭","巴拿马":"🇵🇦","乌兹别克斯坦":"🇺🇿","哥伦比亚":"🇨🇴"};
+var GR = {A:["墨西哥","捷克","韩国","南非"],B:["加拿大","瑞士","卡塔尔","波黑"],C:["巴西","摩洛哥","苏格兰","海地"],D:["美国","巴拉圭","奥大利亚","土耳其"],E:["德国","科特迪瓦","厄瓜多尔","库拉索"],F:["荷兰","瑞典","日本","突尼斯"],G:["比利时","伊朗","新西兰","埃及"],H:["西班牙","沙特","乌拉圭","佛得角"],I:["法国","伊拉克","挪威","塞内加尔"],J:["阿根廷","奥地利","约旦","阿尔及利亚"],K:["葡萄牙","乌兹别克斯坦","哥伦比亚","民主刚果"],L:["英格兰","加纳","巴拿马","克罗地亚"]};
+function fl(n){return FL[n]||"🏴"}
+function ucd(){
+  var n=new Date(),t=new Date(2026,5,15,1,0,0),d=t-n;if(d<=0)return;
+  document.getElementById("cdD").textContent=String(Math.floor(d/86400000)).padStart(2,"0");
+  document.getElementById("cdH").textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,"0");
+  document.getElementById("cdM").textContent=String(Math.floor((d%3600000)/60000)).padStart(2,"0");
+  document.getElementById("cdS").textContent=String(Math.floor((d%60000)/1000)).padStart(2,"0");
+}
+ucd();setInterval(ucd,1000);
+function renderSchedule(){
+  var now=new Date();now.setHours(0,0,0,0);
+  var tm=now.getMonth()+1,td=now.getDate();
+  var gr={};
+  WM.forEach(function(m){
+    var p=m.d.split("月"),mon=parseInt(p[0],10),day=parseInt(p[1],10);
+    if(mon<tm||(mon===tm&&day<td))return;
+    if(!gr[m.d])gr[m.d]=[];
+    gr[m.d].push(m);
+  });
+  var h="",keys=Object.keys(gr).sort();
+  keys.forEach(function(dk){
+    var p=dk.split("月"),mon=parseInt(p[0],10),day=parseInt(p[1],10);
+    var isT=mon===tm&&day===td;
+    var c=isT?"var(--cyan)":"var(--t2)";
+    h+='<div style="margin-bottom:8px">';
+    h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 0 5px">';
+    h+='<span style="font-size:13px;font-weight:600;color:'+c+'">'+dk+'</span>';
+    if(isT)h+='<span style="font-size:8px;background:var(--cyan);color:#080b14;padding:1px 6px;border-radius:4px;font-weight:700">今天</span>';
+    h+='<span style="flex:1;height:1px;background:'+(isT?"rgba(0,229,255,.12)":"rgba(255,255,255,.04)")+'"></span>';
+    h+='<span style="font-size:9px;color:var(--t3)">'+gr[dk].length+'场</span></div>';
+    gr[dk].forEach(function(m){
+      h+='<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;margin:2px 0;border-radius:6px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);font-size:12px">';
+      h+='<span style="font-family:var(--mono);font-size:11px;color:var(--t3);width:38px;flex-shrink:0;text-align:center">'+m.t.slice(0,5)+'</span>';
+      h+='<span style="font-size:9px;color:var(--gold);background:rgba(251,191,36,.1);padding:1px 5px;border-radius:3px;flex-shrink:0">'+m.g+'组</span>';
+      h+='<span style="flex:1;text-align:right;font-weight:600;color:var(--t1)">'+fl(m.h)+" "+m.h+'</span>';
+      h+='<span style="font-size:10px;color:var(--t3);width:18px;text-align:center;flex-shrink:0">VS</span>';
+      h+='<span style="flex:1;font-weight:600;color:var(--t1)">'+fl(m.a)+" "+m.a+'</span>';
+      h+="</div>";
+    });
+    h+="</div>";
+  });
+  document.getElementById("sv").innerHTML=h;
+}
+function renderStand(){
+  var gk=Object.keys(GR),S={};
+  gk.forEach(function(g){S[g]={};GR[g].forEach(function(t){S[g][t]={mp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0};});});
+  WM.forEach(function(m){
+    if(!m.s)return;var p=m.s.split("-");if(p.length!=2)return;
+    var gh=parseInt(p[0],10),ga=parseInt(p[1],10),gr=m.g,ht=m.h,at=m.a;
+    if(!S[gr]||!S[gr][ht]||!S[gr][at])return;
+    S[gr][ht].mp++;S[gr][at].mp++;S[gr][ht].gf+=gh;S[gr][at].gf+=ga;
+    S[gr][ht].ga+=ga;S[gr][at].ga+=gh;
+    if(gh>ga){S[gr][ht].w++;S[gr][ht].pts+=3;S[gr][at].l++;}
+    else if(gh<ga){S[gr][at].w++;S[gr][at].pts+=3;S[gr][ht].l++;}
+    else{S[gr][ht].d++;S[gr][at].d++;S[gr][ht].pts++;S[gr][at].pts++;}
+  });
+  gk.forEach(function(g){Object.keys(S[g]).forEach(function(t){S[g][t].gd=S[g][t].gf-S[g][t].ga;});});
+  var h='<div class="section-title">🏆 小组积分榜 (12组)</div>';
+  gk.forEach(function(g){
+    var sd=GR[g].slice().sort(function(a,b){
+      if(S[g][b].pts!=S[g][a].pts)return S[g][b].pts-S[g][a].pts;
+      if(S[g][b].gd!=S[g][a].gd)return S[g][b].gd-S[g][a].gd;
+      return S[g][b].gf-S[g][a].gf;
+    });
+    h+='<div class="standings-group"><div class="standings-header"><span>GROUP '+g+'</span><span class="sub">'+GR[g].length+'队</span></div><table class="st-table"><thead><tr><th>#</th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>Pts</th></tr></thead><tbody>';
+    sd.forEach(function(t,i){
+      var s=S[g][t];
+      h+='<tr class="r'+(i<2?i+1:"")+'"><td>'+(i+1)+'</td><td class="tc">'+fl(t)+t+'</td><td>'+s.mp+'</td><td>'+s.w+'</td><td>'+s.d+'</td><td>'+s.l+'</td><td>'+s.gf+'</td><td>'+s.ga+'</td><td>'+(s.gd>0?"+":"")+s.gd+'</td><td class="pc">'+s.pts+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+  });
+  document.getElementById("sv").innerHTML=h;
+}
+function showSched(){
+  document.getElementById("dv").classList.add("hidden");
+  document.getElementById("sv").classList.add("show");
+  document.getElementById("b1").classList.add("active");
+  document.getElementById("b2").classList.remove("active");
+  renderSchedule();
+}
+function showStand(){
+  document.getElementById("dv").classList.add("hidden");
+  document.getElementById("sv").classList.add("show");
+  document.getElementById("b2").classList.add("active");
+  document.getElementById("b1").classList.remove("active");
+  renderStand();
+}
+function goHome(){
+  document.getElementById("dv").classList.remove("hidden");
+  document.getElementById("sv").classList.remove("show");
+  document.getElementById("b1").classList.remove("active");
+  document.getElementById("b2").classList.remove("active");
+}
+// From page02-analysis
+var __DATA = null; // loaded from JSON by initApp()
+var AL = null; // loaded from JSON
+
+var DN = null; // loaded from JSON
+
+var FL = {"墨西哥":"🇲🇽","南非":"🇿🇦","韩国":"🇰🇷","捷克":"🇨🇿","加拿大":"🇨🇦","波黑":"🇧🇦","美国":"🇺🇸","巴拉圭":"🇵🇾","卡塔尔":"🇶🇦","瑞士":"🇨🇭","巴西":"🇧🇷","摩洛哥":"🇲🇦","海地":"🇭🇹","苏格兰":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","澳大利亚":"🇦🇺","土耳其":"🇹🇷","德国":"🇩🇪","库拉索":"🇨🇼","荷兰":"🇳🇱","日本":"🇯🇵","科特迪瓦":"🇨🇮","厄瓜多尔":"🇪🇨","瑞典":"🇸🇪","突尼斯":"🇹🇳","西班牙":"🇪🇸","佛得角":"🇨🇻","比利时":"🇧🇪","埃及":"🇪🇬","沙特阿拉伯":"🇸🇦","乌拉圭":"🇺🇾","伊朗":"🇮🇷","新西兰":"🇳🇿","法国":"🇫🇷","塞内加尔":"🇸🇳","伊拉克":"🇮🇶","挪威":"🇳🇴","阿根廷":"🇦🇷","阿尔及利亚":"🇩🇿","奥地利":"🇦🇹","约旦":"🇯🇴","葡萄牙":"🇵🇹","刚果(金)":"🇨🇩","英格兰":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","克罗地亚":"🇭🇷","加纳":"🇬🇭","巴拿马":"🇵🇦","乌兹别克斯坦":"🇺🇿","哥伦比亚":"🇨🇴"};
+function fl(n){return FL[n]||"🏴"}
+function buildDateBar(){
+  var keys = Object.keys(AL).sort();
+  var h = "";
+  var n=new Date(),ms=String(n.getMonth()+1).padStart(2,"0"),ds=String(n.getDate()).padStart(2,"0"),ts=ms+"-"+ds;
+  keys.forEach(function(k){
+    var t = k === ts;
+    h += '<div class="db-item'+(t?" today":"")+'" onclick="selectDate(\''+k+'\',this)"><span class="db-day">'+k+'</span><span class="db-wd">'+DN[k]+'</span>'+(t?'<span class="db-badge">今天</span>':"")+'</div>';
+  });
+  document.getElementById("dateBar").innerHTML = h;
+}
+function selectDate(dateKey, el){
+  document.querySelectorAll(".db-item").forEach(function(d){d.classList.remove("active");});
+  el.classList.add("active");
+  renderMatches(dateKey);
+}
+function rateClass(rating){
+  if(rating==="C") return "C";
+  return "B";
+}
+function dirClass(direction){
+  if(direction==="负"||direction==="让负") return "lose";
+  return "dir";
+}
+function renderMatches(dateKey){
+  var ids = AL[dateKey];
+  if(!ids||ids.length===0){document.getElementById("matchArea").innerHTML='<div class="empty-state"><div class="ei">📭</div><div class="et">暂无数据</div><div class="ed">该日期暂无预测记录</div></div>';return;}
+  var h = "";
+  // Compute stats for today
+  var total=0,hits=0;
+  ids.forEach(function(id){
+    var r = __DATA.rating.find(function(x){return x.id===id;});
+    if(r && r.actual_score){total++;if(r.hit)hits++;}
+  });
+  ids.forEach(function(id){
+    var r = __DATA.rating.find(function(x){return x.id===id;});
+    var mc = __DATA.mc.find(function(x){return x.id===id;});
+    var na = __DATA.narratives[id] || "";
+    if(!r) return;
+    var isCompleted = r.actual_score ? true : false;
+    if(isCompleted){
+      // Result card (expandable comparison)
+      var hitClass = r.hit ? "hit" : "miss";
+      var hitText = r.hit ? "✅ 命中" : "❌ 未中";
+      var scParts = r.actual_score.split("-");
+      var actualGoals = parseInt(scParts[0]) + parseInt(scParts[1]);
+      var goalKey = actualGoals+"球";
+      var goalsHit = mc && mc.top2_total_goals && mc.top2_total_goals.indexOf(goalKey) !== -1;
+      var hfHit = mc && mc.top2_half_full && mc.top2_half_full.indexOf(r.half_full) !== -1;
+      var scHit = mc && mc.top3_scores && mc.top3_scores.indexOf(r.actual_score) !== -1;
+      h += '<div class="mr result-card" onclick="this.classList.toggle(\'exp\')"><div class="mh"><div class="mc-info">';
+      h += '<div class="mc-line1">世界杯 · '+r.event+' · '+r.id+'</div>';
+      h += '<div class="mc-teams"><span>'+fl(r.home)+' '+r.home+'</span><span class="mc-vs">VS</span><span>'+fl(r.away)+' '+r.away+'</span></div>';
+      h += '</div><div class="result-badge '+hitClass+'">'+hitText+'</div><div class="result-score">'+r.actual_score+'</div><div class="mc-arrow">▼</div></div>';
+      h += '<div class="mb"><div class="mb-inner">';
+      h += '<div class="pb-title">预测回顾</div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">方向</span><span class="cmp-val '+hitClass+'">'+r.direction+'</span><span class="cmp-icon">'+(r.hit?'✅':'❌')+'</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">评级</span><span class="cmp-val">'+r.rating+'</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">总进球</span><span class="cmp-val '+(goalsHit?'hit':'miss')+'">'+(mc?mc.top2_total_goals.join(" / "):"--")+'</span><span class="cmp-icon">'+(goalsHit?'✅':'❌')+'</span><span class="cmp-actual">实际 '+actualGoals+'球</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">半全场</span><span class="cmp-val '+(hfHit?'hit':'miss')+'">'+(mc?mc.top2_half_full.join(" / "):"--")+'</span><span class="cmp-icon">'+(hfHit?'✅':'❌')+'</span><span class="cmp-actual">实际 '+r.half_full+'</span></div>';
+      h += '<div class="cmp-row"><span class="cmp-lbl">比分</span><span class="cmp-val '+(scHit?'hit':'miss')+'">'+(mc?mc.top3_scores.join(" / "):"--")+'</span><span class="cmp-icon">'+(scHit?'✅':'❌')+'</span><span class="cmp-actual">实际 '+r.actual_score+'</span></div>';
+      if(na){h += '<div class="na" style="margin-top:8px">'+na+'</div>';}
+      h += '</div></div></div>';
+    }else if(!r.direction || !mc || !mc.physical){
+      // Pending card - basic info only
+      h += '<div class="mr" style="cursor:default"><div class="mh"><div class="mc-info">';
+      h += '<div class="mc-line1">世界杯 · '+r.event+'· '+r.id+'</div>';
+      h += '<div class="mc-teams"><span>'+fl(r.home)+' '+r.home+'</span><span class="mc-vs">VS</span><span>'+fl(r.away)+' '+r.away+'</span></div>';
+      h += '<div class="mc-tags"><span class="mc-tag" style="color:var(--gold)">\u23f3 \u7b49\u5f85\u9884\u6d4b\u6570\u636e</span></div>';
+      h += '</div></div></div>';
+    }else{      // Prediction card (expandable)
+      var dirCls = dirClass(r.direction);
+      var meltClass = r.meltdown ? ' mc-tag melt' : '';
+      var phys = mc ? mc.physical : {};
+      var hw = phys.home_win || 0;
+      var dr = phys.draw || 0;
+      var aw = phys.away_win || 0;
+      var tg = mc && mc.top2_total_goals ? mc.top2_total_goals.join(" / ") : "--";
+      var hf = mc && mc.top2_half_full ? mc.top2_half_full.join(" / ") : "--";
+      var ts = mc && mc.top3_scores ? mc.top3_scores[0] : "--";
+      var bk = mc && mc.top3_scores ? mc.top3_scores.slice(1).join(" / ") : "--";
+      var ld = mc ? (mc.lambda_diff > 0 ? "+"+mc.lambda_diff.toFixed(2) : mc.lambda_diff.toFixed(2)) : "--";
+      var fd = r.fit_score ? r.fit_score.toFixed(1) : "--";
+      h += '<div class="mr" onclick="this.classList.toggle(\'exp\')"><div class="mh"><div class="mc-info">';
+      h += '<div class="mc-line1">世界杯 · '+r.event+' · '+r.id+'</div>';
+      h += '<div class="mc-teams"><span>'+fl(r.home)+' '+r.home+'</span><span class="mc-vs">VS</span><span>'+fl(r.away)+' '+r.away+'</span><span class="mc-tag dir '+dirCls+'" style="margin-left:auto">'+r.direction+'</span><span class="mc-tag '+rateClass(r.rating)+'">'+r.rating+'</span></div>';
+      h += '</div><div class="mc-arrow">▼</div></div>';
+      // Expandable body
+      h += '<div class="mb"><div class="mb-inner">';
+      h += '<div><div class="pb-title">蒙特卡洛概率</div>';
+      h += '<div class="br"><span class="bl">主胜</span><div class="bt"><div class="bf" style="width:'+(hw*100).toFixed(0)+'%;background:var(--cyan)"></div></div><span class="bv" style="color:var(--cyan)">'+(hw*100).toFixed(1)+'%</span></div>';
+      h += '<div class="br"><span class="bl">平局</span><div class="bt"><div class="bf" style="width:'+(dr*100).toFixed(0)+'%;background:var(--gold)"></div></div><span class="bv" style="color:var(--gold)">'+(dr*100).toFixed(1)+'%</span></div>';
+      h += '<div class="br"><span class="bl">客胜</span><div class="bt"><div class="bf" style="width:'+(aw*100).toFixed(0)+'%;background:var(--red)"></div></div><span class="bv" style="color:var(--red)">'+(aw*100).toFixed(1)+'%</span></div></div>';
+      h += '<div class="g2"><div class="gi"><div class="gl">λ差</div><div class="gv gvh">'+ld+'</div></div><div class="gi"><div class="gl">拟合分</div><div class="gv">'+fd+'</div></div><div class="gi"><div class="gl">总进球</div><div class="gv">'+tg+'</div></div><div class="gi"><div class="gl">半全场</div><div class="gv">'+hf+'</div></div></div>';
+      h += '<div class="g2"><div class="gi"><div class="gl">最可能比分</div><div class="gv gvh">'+ts+'</div></div><div class="gi"><div class="gl">备选</div><div class="gv">'+bk+'</div></div></div>';
+      if(na){
+        h += '<div class="na">'+na+'</div>';
+      }
+      h += '</div></div></div>';
+    }
+  });
+  document.getElementById("matchArea").innerHTML = h;
+  // Update date info
+  var q = dateKey.split("-");
+  document.getElementById("dateDisplay").textContent = "2026-"+q[0]+"-"+q[1];
+  document.getElementById("matchCount").textContent = ids.length+"场";
+}
+
+
+// From page03-news
+function openArticle(id){
+  var overlay = document.getElementById("viewerOverlay");
+  var loading = document.getElementById("viewerLoading");
+  var frame = document.getElementById("viewerFrame");
+  var inline = document.getElementById("viewerInline");
+  var title = document.getElementById("viewerTitle");
+  if(id === 'pinned'){
+    title.textContent = "用数据读懂比赛，用AI推荐方向";
+    frame.style.display = "none";
+    inline.style.display = "block";
+    loading.style.display = "none";
+    var content = document.getElementById("pinnedContent").innerHTML;
+    inline.innerHTML = content;
+    overlay.classList.add("active");
+  }
+}
+function closeArticle(){
+  document.getElementById("viewerOverlay").classList.remove("active");
+  var frame = document.getElementById("viewerFrame");
+  frame.src = "";
+  frame.style.display = "";
+  var inline = document.getElementById("viewerInline");
+  inline.style.display = "none";
+  inline.innerHTML = "";
+}
+// From page03-review
+var reviews = [
+  {
+    date:"6月12日", group:"A", id:"周四001",
+    home:"墨西哥", away:"南非", homeFlag:"🇲🇽", awayFlag:"🇿🇦",
+    result: "hit", score:"2-0", prediction:"主胜", predClass:"hit-tag",
+    direction:"↑ 主胜", rating:"B", note:"模型主胜87.2%，λ差+2.33，赔率持续压低主胜，方向正确。"
+  },
+  {
+    date:"6月12日", group:"A", id:"周四002",
+    home:"韩国", away:"捷克", homeFlag:"🇰🇷", awayFlag:"🇨🇿",
+    result: "hit", score:"2-1", prediction:"让胜", predClass:"hit-tag",
+    direction:"↑ 让胜", rating:"B", note:"模型客胜28.1%，λ差-0.44，韩国让球方向打出。"
+  },
+  {
+    date:"6月13日", group:"B", id:"周五003",
+    home:"加拿大", away:"波黑", homeFlag:"🇨🇦", awayFlag:"🇧🇦",
+    result: "draw", score:"1-1", prediction:"平局", predClass:"draw-tag",
+    direction:"→ 平局", rating:"B", note:"拟合分5.14，λ差+0.43，平局方向走水位。"
+  },
+  {
+    date:"6月13日", group:"D", id:"周五004",
+    home:"美国", away:"巴拉圭", homeFlag:"🇺🇸", awayFlag:"🇵🇾",
+    result: "hit", score:"4-1", prediction:"主胜", predClass:"hit-tag",
+    direction:"↑ 主胜", rating:"A", note:"模型主胜79.3%，λ差+1.87，美国大胜打出。"
+  },
+  {
+    date:"6月14日", group:"B", id:"周六005",
+    home:"卡塔尔", away:"瑞士", homeFlag:"🇶🇦", awayFlag:"🇨🇭",
+    result: "hit", score:"1-1", prediction:"客胜", predClass:"miss-tag",
+    direction:"↑ 客胜", rating:"C", note:"模型客胜81.7%，λ差-1.95，但实际平局，未命中。评级C崩盘场次。"
+  },
+  {
+    date:"6月14日", group:"C", id:"周六006",
+    home:"巴西", away:"摩洛哥", homeFlag:"🇧🇷", awayFlag:"🇲🇦",
+    result: "miss", score:"1-1", prediction:"主胜", predClass:"miss-tag",
+    direction:"↑ 主胜", rating:"B", note:"巴西占据控球优势但效率不足，摩洛哥防反逼平。"
+  },
+  {
+    date:"6月14日", group:"C", id:"周六007",
+    home:"海地", away:"苏格兰", homeFlag:"🇭🇹", awayFlag:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    result: "hit", score:"0-1", prediction:"客胜", predClass:"hit-tag",
+    direction:"↑ 客胜", rating:"B", note:"模型客胜64.2%，苏格兰一球小胜，方向正确。"
+  },
+  {
+    date:"6月14日", group:"D", id:"周六008",
+    home:"澳大利亚", away:"土耳其", homeFlag:"🇦🇺", awayFlag:"🇹🇷",
+    result: "hit", score:"2-0", prediction:"主胜", predClass:"hit-tag",
+    direction:"↑ 主胜", rating:"A", note:"澳大利亚主场优势明显，2-0完胜，方向精准。"
+  }
+];
+function renderReviews(filter) {
+  var container = document.getElementById("reviewList");
+  if(!container) return;
+  var grouped = {};
+  reviews.forEach(function(r){
+    if(filter && r.result !== filter) return;
+    if(!grouped[r.date]) grouped[r.date] = [];
+    grouped[r.date].push(r);
+  });
+  var h = "";
+  var dateKeys = Object.keys(grouped).sort();
+  dateKeys.forEach(function(dk){
+    h += '<div class="day-group"><div class="day-label"><span>'+dk+'</span><div class="count">'+grouped[dk].length+' 场</div></div>';
+    grouped[dk].forEach(function(r){
+      var cardClass = "rv-card";
+      if(r.result === "hit") cardClass += " hit";
+      else if(r.result === "miss") cardClass += " miss";
+      var scoreClass = "score";
+      if(r.result === "hit") scoreClass += " green";
+      else if(r.result === "miss") scoreClass += " red";
+      else scoreClass += " gold";
+      var statusText = r.result === "hit" ? "✅ 命中" : (r.result === "miss" ? "❌ 未中" : "⚖️ 走水");
+      h += '<div class="'+cardClass+'">';
+      h += '<div class="rv-cl">';
+      h += '<div class="rv-ce">世界杯 · '+r.group+'组 · '+r.id+'</div>';
+      h += '<div class="rv-ct"><span>'+r.homeFlag+' '+r.home+'</span><span class="rv-cv">VS</span><span>'+r.awayFlag+' '+r.away+'</span></div>';
+      h += '<div class="rv-tags"><span class="rv-tag '+r.predClass+'">'+r.direction+'</span><span class="rv-tag">'+r.rating+'</span></div>';
+      h += '</div>';
+      h += '<div class="rv-cr"><div class="'+scoreClass+'">'+r.score+'</div><div class="status" style="color:'+(r.result==="hit"?"var(--green)":r.result==="miss"?"var(--red)":"var(--gold)")+'">'+statusText+'</div></div>';
+      h += '</div>';
+    });
+    h += '</div>';
+  });
+  container.innerHTML = h || '<div class="ph"><div class="pi">📭</div><div class="pt">无匹配记录</div><div class="pd">当前筛选条件下没有复盘数据</div></div>';
+}
+function filterReview(type, btn) {
+  document.querySelectorAll(".rv-filter button").forEach(function(b){ b.classList.remove("active"); });
+  btn.classList.add("active");
+  renderReviews(type === "all" ? null : type);
+}
+function switchTab(id) {
+  document.querySelectorAll(".page").forEach(function(p){ p.style.display = "none"; });
+  document.getElementById(id).style.display = "flex";
+  document.querySelectorAll(".tab-item").forEach(function(t){ t.classList.remove("active"); });
+  document.querySelectorAll(".tab-item").forEach(function(t){
+    if(t.getAttribute("onclick") && t.getAttribute("onclick").includes(id)) t.classList.add("active");
+  });
+  if(id === "pageHome") {
+    document.getElementById("dv").classList.remove("hidden");
+    document.getElementById("sv").classList.remove("show");
+    document.getElementById("b1").classList.remove("active");
+    document.getElementById("b2").classList.remove("active");
+  }
+
+  if(id === 'page02' && __DATA && __DATA.rating) {
+    var n=new Date(),ms=String(n.getMonth()+1).padStart(2,"0"),ds=String(n.getDate()).padStart(2,"0"),todayStr=ms+"-"+ds;
+    var today = Object.keys(AL).sort().find(function(k){return k===todayStr}) || Object.keys(AL).sort()[0];
+    if(document.getElementById('matchArea')) renderMatches(today);
+    document.querySelectorAll('.db-item').forEach(function(d){d.classList.remove('active');});
+    var el=document.querySelector('.db-item.today');
+    if(el) el.classList.add('active');
+  }
+}
+// From page04-settings
+function showQR(){
+  document.getElementById("qrOverlay").classList.add("active");
+}
+function closeQR(e){
+  if(!e || e.target === e.currentTarget || !e){
+    document.getElementById("qrOverlay").classList.remove("active");
+  }
+}
+var __DATA = {}, AL = {}, GR = {}, DN = {}, _cfg = {};
+function _teamFlag(name) {
+  // Use FL (hardcoded flag emoji) as primary source
+  var flag = FL[name] || name.slice(0,2);
+  // Generate a consistent color from team name
+  var colors = ['#00e5ff','#fbbf24','#00e676','#ef5350','#ab47bc','#42a5f5','#ff7043','#26c6da','#9ccc65','#ec407a'];
+  var idx = 0;
+  for(var i=0;i<name.length;i++) idx = (idx + name.charCodeAt(i)) % colors.length;
+  return {flag: flag, color: colors[idx]};
+}
+function _venue(id) {
+  var v = _cfg && _cfg.venues ? _cfg.venues[id] : null;
+  return v || null;
+}
+var _cdTimer;
+function renderCountdown() {
+  var now = Date.now();
+  var upcoming = null;
+  __DATA.rating.forEach(function(r){
+    if(r.actual_score) return;
+    var parts = r.time.split(' ');
+    if(!parts[1]) return;
+    var dp = parts[0].split('-'), tp = parts[1].split(':');
+    var md = new Date(parseInt(dp[0]), parseInt(dp[1])-1, parseInt(dp[2]), parseInt(tp[0]), parseInt(tp[1]));
+    if(md.getTime() > now && (!upcoming || md.getTime() < upcoming.date.getTime())){
+      upcoming = {match: r, date: md};
+    }
+  });
+  if(!upcoming){
+    document.getElementById('matchInfo').innerHTML = '<div style="text-align:center;padding:20px;color:var(--t3);font-size:13px">2026??????</div>';
+    document.getElementById('countdownSection').style.display = 'none';
+    return;
+  }
+  var m = upcoming.match, d = upcoming.date;
+  var tf = _teamFlag(m.home), af = _teamFlag(m.away);
+  var venue = _venue(m.id);
+  document.getElementById('matchGroup').textContent = (venue ? venue.group + '组 · ' + venue.venue : m.event || '???');
+  document.getElementById('homeFlag').innerHTML = tf.flag;
+  document.getElementById('homeFlag').style.background = tf.color;
+  document.getElementById('homeName').textContent = m.home;
+  document.getElementById('awayFlag').innerHTML = af.flag;
+  document.getElementById('awayFlag').style.background = af.color;
+  document.getElementById('awayName').textContent = m.away;
+  var mo = d.getMonth()+1, dd = d.getDate(), hh = d.getHours(), mm = d.getMinutes();
+  document.getElementById('matchTime').textContent = '⏱ ' + mo + '月' + dd + '日 ' + (hh<10?'0':'')+hh+':'+(mm<10?'0':'')+mm;
+  document.getElementById('matchVenue').textContent = '📍 ' + (venue ? venue.venue : '');
+  if(_cdTimer) clearInterval(_cdTimer);
+  _cdTimer = setInterval(function(){
+    var now2 = Date.now(), diff = d.getTime() - now2;
+    if(diff <= 0){
+      clearInterval(_cdTimer); _cdTimer = null;
+      renderCountdown();
+      return;
+    }
+    var s = Math.floor(diff/1000)%60, mi = Math.floor(diff/60000)%60, h = Math.floor(diff/3600000)%24, day = Math.floor(diff/86400000);
+    document.getElementById('cdD').textContent=(day<10?'0':'')+day;
+    document.getElementById('cdH').textContent=(h<10?'0':'')+h;
+    document.getElementById('cdM').textContent=(mi<10?'0':'')+mi;
+    document.getElementById('cdS').textContent=(s<10?'0':'')+s;
+  }, 1000);
+}
+function renderSettings(cfg) {
+  var dsHtml = '';
+  cfg.dataSources.forEach(function(s){
+    var dotClass = s.status === 'on' ? 'source-dot on' : 'source-dot';
+    dsHtml += '<div class="source-item"><div class="source-info"><span class="' + dotClass + '"></span>' + s.name + '</div><span class="source-desc">' + s.desc + '</span></div>';
+  });
+  document.getElementById('dataSources').innerHTML = dsHtml;
+  var gHtml = '';
+  cfg.guide.forEach(function(g){
+    gHtml += '<div class="guide-item"><div class="guide-icon">' + g.icon + '</div><div class="guide-text"><div class="guide-title">' + g.title + '</div><div class="guide-desc">' + g.desc + '</div></div></div>';
+  });
+  document.getElementById('guideSection').innerHTML = gHtml;
+  document.getElementById('authorSection').innerHTML = '<p class="author-bio">' + cfg.author.bio + '</p><button class="contact-btn" onclick="showQR()">' + cfg.author.contactLabel + '</button>';
+  document.getElementById('footerSection').innerHTML = cfg.footer.replace(/\n/g, '<br>');
+}
+function renderNews(news) {
+  var h = '';
+  news.forEach(function(a){
+    if(a.isPinned){
+      h += '<div class="pinned-card" onclick="openArticle(\'pinned\')">';
+      h += '<div class="article-date" style="color:var(--gold);font-weight:600">📰 来源：' + a.source + '</div>';
+      h += '<div class="article-title" style="font-size:15px;color:var(--gold);line-height:1.5">' + a.title + '</div>';
+      h += '<div class="article-summary">' + (a.sections && a.sections[0] ? a.sections[0].body.slice(0,80) + '...' : '') + '</div>';
+      h += '<div class="article-meta"><span class="article-views">👁 ' + a.views + ' 次阅读</span><span style="font-size:10px;color:var(--cyan)">📖 阅读全文</span></div>';
+      h += '</div>';
+      var pc = '';
+      if(a.sections){
+        a.sections.forEach(function(s){
+          pc += '<div class="pinned-section"><h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎ ' + s.heading + '</h4>';
+          pc += '<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">' + s.body + '</p></div>';
+        });
+      }
+      document.getElementById('pinnedContent').innerHTML = '<div class="pinned-article-inner"><h3 style="font-size:15px;font-weight:700;color:#fbbf24;margin:0 0 12px 0;padding-bottom:10px;border-bottom:1px solid rgba(251,191,36,.15);">' + a.title + '</h3>' + pc + '<p style="font-size:11px;color:#5a6577;margin:10px 0 0 0;padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.04);text-align:center;">用数据读懂比赛，用AI推荐方向</p></div>';
+    } else {
+      h += '<a class="article-card" href="' + a.url + '" target="_blank" rel="noopener">';
+      h += '<div class="article-date">' + a.date + '</div>';
+      h += '<div class="article-title">' + a.title + '</div>';
+      h += '<div class="article-summary">' + a.summary + '</div>';
+      h += '<div class="article-meta"><span class="article-views">👁 ' + a.views + ' 次阅读</span><span style="font-size:10px;color:var(--cyan)">📖 阅读全文</span></div>';
+      h += '</a>';
+    }
+  });
+  document.getElementById('newsSection').innerHTML = h;
+}
+async function initApp() {
+  try {
+    var r = await fetch('data/analysis.json');
+    var d = await r.json();
+    __DATA = { rating: d.rating, mc: d.mc, narratives: d.narratives };
+    AL = d.AL; GR = d.GR; DN = d.DN;
+    var rc = await fetch('data/config.json');
+    var cfg = await rc.json();
+    _cfg = cfg;
+    renderCountdown();
+    renderSettings(cfg);
+    var rn = await fetch('data/news.json');
+    var nd = await rn.json();
+    renderNews([Object.assign({isPinned:true}, nd.pinned)].concat(nd.articles));
+    buildDateBar();
+    var items = document.querySelectorAll('#dateBar .db-item');
+    if(items.length > 0){
+      var n=new Date(),ms=String(n.getMonth()+1).padStart(2,"0"),ds=String(n.getDate()).padStart(2,"0"),todayStr=ms+"-"+ds;
+      var found = Array.from(items).find(function(el){return el.querySelector('.db-day')&&el.querySelector('.db-day').textContent===todayStr;});
+      if(found) found.classList.add('active'); else items[0].classList.add('active');
+    }
+    var today = Object.keys(AL).sort().find(function(k){return k===todayStr}) || Object.keys(AL).sort()[0];
+    renderMatches(today);
+    document.getElementById('loadingOverlay').style.display = 'none';
+  } catch(e) {
+    console.error(e);
+    document.getElementById('loadingOverlay').innerHTML = '<div style="padding:40px;text-align:center;color:var(--t3)"><div style="font-size:36px">ERROR</div><div style="font-size:14px">' + e.message + '</div><div style="font-size:11px">' + (e.stack||"").slice(0,200) + '</div></div>';
+  }
+}
+initApp();
+</script>
+</body>
+</html>
