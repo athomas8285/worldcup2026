@@ -1,5 +1,5 @@
 const CACHE = 'v333-v1';
-const URLS = ['merged.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
+const URLS = ['index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(

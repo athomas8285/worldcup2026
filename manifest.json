@@ -1,8 +1,8 @@
 {
-  "name": "V3.3.3 ??AI??",
+  "name": "V3.3.3 足球AI预测",
   "short_name": "V3.3.3",
-  "description": "?????AI????",
-  "start_url": "merged.html",
+  "description": "2026世界杯AI预测分析系统",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#080b14",
