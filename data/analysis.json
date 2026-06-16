@@ -14,7 +14,12 @@
       "scenario_type": "稳定型",
       "direction_warning": false,
       "homeFlag": "🇪🇸",
-      "awayFlag": "🇨🇻"
+      "awayFlag": "🇨🇻",
+      "actual_score": "0-0",
+      "hit": false,
+      "result": "miss",
+      "score": "0-0",
+      "predClass": "miss"
     },
     {
       "id": "周一014",
@@ -30,7 +35,12 @@
       "scenario_type": "低返还率赛事",
       "direction_warning": false,
       "homeFlag": "🇧🇪",
-      "awayFlag": "🇪🇬"
+      "awayFlag": "🇪🇬",
+      "actual_score": "1-1",
+      "hit": false,
+      "result": "miss",
+      "score": "1-1",
+      "predClass": "miss"
     },
     {
       "id": "周一015",
@@ -46,7 +56,12 @@
       "scenario_type": "低返还率赛事",
       "direction_warning": false,
       "homeFlag": "🇸🇦",
-      "awayFlag": "🇺🇾"
+      "awayFlag": "🇺🇾",
+      "actual_score": "1-1",
+      "hit": false,
+      "result": "miss",
+      "score": "1-1",
+      "predClass": "miss"
     },
     {
       "id": "周一016",
@@ -62,7 +77,12 @@
       "scenario_type": "低返还率赛事",
       "direction_warning": false,
       "homeFlag": "🇮🇷",
-      "awayFlag": "🇳🇿"
+      "awayFlag": "🇳🇿",
+      "actual_score": "2-2",
+      "hit": false,
+      "result": "miss",
+      "score": "2-2",
+      "predClass": "miss"
     },
     {
       "id": "周三021",
@@ -150,7 +170,7 @@
       "away": "挪威",
       "event": "世界杯",
       "time": "2026-06-17 06:00",
-      "direction": "负",
+      "direction": "让负",
       "fit_score": 4.09,
       "rating": "B",
       "downgrade_count": 0,

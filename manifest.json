@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "V3.3.3 足球AI预测",
   "short_name": "V3.3.3",
   "description": "2026世界杯AI预测分析系统",
@@ -11,12 +11,14 @@
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ]
 }
