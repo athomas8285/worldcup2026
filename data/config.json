@@ -146,10 +146,6 @@
       "flag": "🇪🇬",
       "color": "linear-gradient(135deg,#555,#555)"
     },
-    "沙特阿拉伯": {
-      "flag": "🇸🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
     "乌拉圭": {
       "flag": "🇺🇾",
       "color": "linear-gradient(135deg,#555,#555)"
@@ -226,17 +222,9 @@
       "flag": "🇨🇴",
       "color": "linear-gradient(135deg,#555,#555)"
     },
-    "奥大利亚": {
-      "flag": "🇦🇺",
-      "color": "linear-gradient(135deg,#00008B,#FFD700)"
-    },
     "沙特": {
       "flag": "🇸🇦",
-      "color": "linear-gradient(135deg,#006C35,#FFFFFF)"
-    },
-    "民主刚果": {
-      "flag": "🇨🇩",
-      "color": "linear-gradient(135deg,#007FFF,#CE1021)"
+      "color": "linear-gradient(135deg,#555,#555)"
     }
   },
   "venues": {
@@ -343,6 +331,38 @@
     "周三021": {
       "group": "K",
       "venue": "休斯敦"
+    },
+    "周四025": {
+      "group": "A",
+      "venue": "亚特兰大"
+    },
+    "周四026": {
+      "group": "B",
+      "venue": "洛杉矶"
+    },
+    "周四027": {
+      "group": "B",
+      "venue": "温哥华"
+    },
+    "周四028": {
+      "group": "A",
+      "venue": "瓜达拉哈拉"
+    },
+    "周五029": {
+      "group": "D",
+      "venue": "西雅图"
+    },
+    "周五030": {
+      "group": "C",
+      "venue": "波士顿"
+    },
+    "周五031": {
+      "group": "C",
+      "venue": "费城"
+    },
+    "周五032": {
+      "group": "D",
+      "venue": "蒙特雷"
     }
   },
   "author": {
@@ -351,9 +371,9 @@
   },
   "footer": "V3.3.3 Football AI Analysis System\n?? ?????????????????????????????????????????????????",
   "appDownload": {
-    "url": "",
+    "url": "http://127.0.0.1:8085/app.apk",
     "buttonLabel": "下载 APK 安装包",
     "qrLabel": "扫码下载 APK",
-    "enabled": false
+    "enabled": true
   }
 }

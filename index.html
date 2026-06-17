@@ -168,42 +168,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .content{flex:1;overflow-y:auto;padding:12px 16px 72px}
 ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:rgba(0,229,255,.08)}
-a.article-card,a.article-card:active,a.article-card:hover{display:block;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
-a.article-card:active{transform:scale(.98)}
-a.article-card:hover{border-color:rgba(0,229,255,.2)}
-.article-card{background:var(--surface);border:1px solid rgba(0,229,255,.06);border-radius:10px;padding:14px;margin-bottom:10px}
-.article-date{font-size:10px;color:var(--t3);margin-bottom:6px}
-.article-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:6px;line-height:1.4}
-.article-summary{font-size:11px;color:var(--t2);line-height:1.5;margin-bottom:8px}
-.article-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
-.article-meta .article-views{font-size:10px;color:var(--t3)}
-.viewer-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;background:#080b14;display:none;flex-direction:column}
-.viewer-overlay.active{display:flex}
-.viewer-header{display:flex;align-items:center;padding:10px 16px;background:rgba(8,11,20,.95);border-bottom:1px solid rgba(0,229,255,.08);flex-shrink:0}
-.viewer-close{font-size:22px;cursor:pointer;color:var(--t2);padding:4px 8px;border:none;background:none;font-family:inherit;line-height:1}
-.viewer-close:active{color:var(--t1)}
-.viewer-title{flex:1;font-size:13px;color:var(--t1);margin:0 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.viewer-frame{flex:1;border:none;width:100%;height:100%}
-.viewer-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--t3);font-size:13px}
+/* Moments feed */
+.moments-header{padding:12px 0 16px;border-bottom:1px solid rgba(0,229,255,.06);margin-bottom:6px}
+.moments-header-name{font-size:16px;font-weight:700;color:var(--t1)}
+.moments-header-desc{font-size:11px;color:var(--t3);margin-top:2px}
+.moment-card{background:var(--surface);border:1px solid rgba(0,229,255,.06);border-radius:10px;padding:14px;margin-bottom:14px;transition:all .15s}
+.moment-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.moment-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.shop-avatar{background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(251,191,36,.05))}
+.moment-author{flex:1;min-width:0}
+.moment-nickname{font-size:14px;font-weight:600;color:var(--t1)}
+.moment-badge{font-size:10px;background:rgba(251,191,36,.15);color:var(--gold);padding:1px 6px;border-radius:3px;margin-left:4px;font-weight:600}
+.moment-time{font-size:10px;color:var(--t3);margin-top:2px}
+.moment-content{font-size:13px;color:var(--t1);line-height:1.6;margin-bottom:10px;word-break:break-word}
+.moment-date-sep{font-size:12px;font-weight:600;color:var(--t2);padding:12px 0 8px}
+.moment-images{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;border-radius:6px;overflow:hidden}
+.moment-photo{aspect-ratio:4/3;overflow:hidden;background:rgba(0,0,0,.2);border-radius:4px;cursor:pointer}
+.moment-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.moment-photo:active{opacity:.8}
+.moment-empty{text-align:center;padding:40px 20px;color:var(--t3);font-size:13px}
 .tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(12,16,33,.8);backdrop-filter:blur(16px);border-top:1px solid rgba(0,229,255,.06);display:flex;padding:6px 0;padding-bottom:env(safe-area-inset-bottom,6px);z-index:100}
 .tab-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;color:var(--t3);border:none;background:none;font-family:inherit;transition:color .15s}
 .tab-item.active{color:var(--cyan)}
 .tab-item .tab-icon{font-size:20px}.tab-item .tab-label{font-size:10px}
 .tab-item.active .tab-label{font-weight:600}
-/* Pinned card */
-.pinned-card{background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(251,191,36,.02));border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:14px;margin-bottom:12px;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
-.pinned-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(251,191,36,.6),rgba(251,191,36,.1))}
-.pinned-card:active{transform:scale(.98)}
-.pinned-card:hover{border-color:rgba(251,191,36,.4)}
-.pinned-badge{display:inline-block;font-size:9px;font-weight:700;color:#080b14;background:#fbbf24;border-radius:3px;padding:2px 6px;margin-bottom:6px;letter-spacing:.5px}
+
 /* Section separator */
 .spacer{height:2px;background:rgba(255,255,255,.03);margin:4px 0 10px;border-radius:1px}
 .section-label{font-size:10px;color:var(--t3);padding:12px 0 6px;display:flex;align-items:center;gap:8px}
 .section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
-/* Inline reader for pinned article */
-.viewer-inline-content{flex:1;overflow-y:auto;padding:20px 18px;display:none}
-.pinned-article-inner{max-width:100%}
-.pinned-article-inner .pinned-section{margin-bottom:16px}
+
 *{margin:0;padding:0;box-sizing:border-box}
 .app{max-width:420px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 :root{--bg:#080b14;--surface:rgba(12,16,33,.75);--surface2:rgba(17,22,41,.7);--t1:#e8edf5;--t2:#8b95a9;--t3:#5a6577;--green:#00e676;--red:#ef5350;--gold:#fbbf24;--cyan:#00e5ff}
@@ -233,15 +227,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .guide-text{flex:1}
 .guide-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px}
 .guide-desc{font-size:11px;color:var(--t2);line-height:1.5}
+.guide-expand-hint{font-size:10px;color:var(--cyan);font-weight:400;margin-left:6px}
+.guide-item{cursor:default}
+.guide-item[onclick]{cursor:pointer}
+.guide-body{padding-top:12px;margin-top:10px;border-top:1px solid rgba(0,229,255,.06)}
+.guide-section{margin-bottom:14px}
+.guide-section-title{font-size:12px;font-weight:700;color:#00e5ff;margin:0 0 6px 0}
+.guide-section-body{font-size:11px;color:var(--t2);line-height:1.7;margin:0}
+.guide-footer{font-size:10px;color:var(--t3);margin:12px 0 0 0;padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.04);text-align:center}
+.guide-expand-hint{font-size:10px;color:var(--cyan);font-weight:400;margin-left:6px}
+.guide-item{cursor:default}
+.guide-item[onclick]{cursor:pointer}
+.guide-body{padding-top:12px;margin-top:10px;border-top:1px solid rgba(0,229,255,.06)}
+.guide-section{margin-bottom:14px}
+.guide-section-title{font-size:12px;font-weight:700;color:#00e5ff;margin:0 0 6px 0}
+.guide-section-body{font-size:11px;color:var(--t2);line-height:1.7;margin:0}
+.guide-footer{font-size:10px;color:var(--t3);margin:12px 0 0 0;padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.04);text-align:center}
 /* Contact button */
 .contact-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:1px solid rgba(0,229,255,.15);border-radius:8px;background:rgba(0,229,255,.04);color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s;margin-top:4px}
 .contact-btn:active{background:rgba(0,229,255,.1)}
 .download-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:10px;border:1px solid rgba(0,229,255,.15);background:rgba(0,229,255,.06);color:var(--cyan);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;margin-bottom:12px}
 .download-btn:active{background:rgba(0,229,255,.12);transform:scale(.97)}
-.download-qr-wrap{text-align:center;padding:8px 0 4px}
-.download-qr-wrap img{width:160px;height:160px;border-radius:8px;display:block;margin:0 auto 8px}
-.download-qr-label{font-size:11px;color:var(--t3)}
-.download-disabled{opacity:.4;pointer-events:none}
 /* About system */
 .about-text{font-size:12px;color:var(--t2);line-height:1.7;margin-bottom:10px}
 .about-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--cyan);text-decoration:none;padding:6px 0;cursor:pointer}
@@ -300,7 +306,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 <div class="tab-bar">
 <button class="tab-item active" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔</span><span class="tab-label">首页</span></button>
 <button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
-<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">💬</span><span class="tab-label">朋友圈</span></button>
 <button class="tab-item" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
 </div></div>
 <script>
@@ -312,20 +318,20 @@ var WM=[
 {d:"6月14日",t:"03:00",g:"B",h:"卡塔尔",a:"瑞士",v:"旧金山湾区",s:"1-1"},
 {d:"6月14日",t:"06:00",g:"C",h:"巴西",a:"摩洛哥",v:"纽约/新泽西",s:"1-1"},
 {d:"6月14日",t:"09:00",g:"C",h:"海地",a:"苏格兰",v:"波士顿",s:"0-1"},
-{d:"6月14日",t:"12:00",g:"D",h:"奥大利亚",a:"土耳其",v:"温哥华",s:"2-0"},
-{d:"6月15日",t:"01:00",g:"E",h:"德国",a:"库拉索",v:"休斯敦",s:""},
-{d:"6月15日",t:"04:00",g:"F",h:"荷兰",a:"日本",v:"达拉斯",s:""},
-{d:"6月15日",t:"07:00",g:"E",h:"科特迪瓦",a:"厄瓜多尔",v:"费城",s:""},
-{d:"6月15日",t:"10:00",g:"F",h:"瑞典",a:"突尼斯",v:"蒙特雷",s:""},
-{d:"6月16日",t:"00:00",g:"H",h:"西班牙",a:"佛得角",v:"亚特兰大",s:""},
-{d:"6月16日",t:"03:00",g:"G",h:"比利时",a:"埃及",v:"西雅图",s:""},
-{d:"6月16日",t:"06:00",g:"H",h:"沙特",a:"乌拉圭",v:"迈阿密",s:""},
-{d:"6月16日",t:"09:00",g:"G",h:"伊朗",a:"新西兰",v:"洛杉矶",s:""},
-{d:"6月17日",t:"03:00",g:"I",h:"法国",a:"塞内加尔",v:"纽约/新泽西",s:""},
-{d:"6月17日",t:"06:00",g:"I",h:"伊拉克",a:"挪威",v:"波士顿",s:""},
-{d:"6月17日",t:"09:00",g:"J",h:"阿根廷",a:"阿尔及利亚",v:"堪萨斯城",s:""},
-{d:"6月17日",t:"12:00",g:"J",h:"奥地利",a:"约旦",v:"旧金山湾区",s:""},
-{d:"6月18日",t:"01:00",g:"K",h:"葡萄牙",a:"民主刚果",v:"休斯敦",s:""},
+{d:"6月14日",t:"12:00",g:"D",h:"澳大利亚",a:"土耳其",v:"温哥华",s:"2-0"},
+{d:"6月15日",t:"01:00",g:"E",h:"德国",a:"库拉索",v:"休斯敦",s:"7-1"},
+{d:"6月15日",t:"04:00",g:"F",h:"荷兰",a:"日本",v:"达拉斯",s:"2-2"},
+{d:"6月15日",t:"07:00",g:"E",h:"科特迪瓦",a:"厄瓜多尔",v:"费城",s:"1-0"},
+{d:"6月15日",t:"10:00",g:"F",h:"瑞典",a:"突尼斯",v:"蒙特雷",s:"5-1"},
+{d:"6月16日",t:"00:00",g:"H",h:"西班牙",a:"佛得角",v:"亚特兰大",s:"0-0"},
+{d:"6月16日",t:"03:00",g:"G",h:"比利时",a:"埃及",v:"西雅图",s:"1-1"},
+{d:"6月16日",t:"06:00",g:"H",h:"沙特",a:"乌拉圭",v:"迈阿密",s:"1-1"},
+{d:"6月16日",t:"09:00",g:"G",h:"伊朗",a:"新西兰",v:"洛杉矶",s:"2-2"},
+{d:"6月17日",t:"03:00",g:"I",h:"法国",a:"塞内加尔",v:"纽约/新泽西",s:"3-1"},
+{d:"6月17日",t:"06:00",g:"I",h:"伊拉克",a:"挪威",v:"波士顿",s:"1-4"},
+{d:"6月17日",t:"09:00",g:"J",h:"阿根廷",a:"阿尔及利亚",v:"堪萨斯城",s:"3-0"},
+{d:"6月17日",t:"12:00",g:"J",h:"奥地利",a:"约旦",v:"旧金山湾区",s:"3-1"},
+{d:"6月18日",t:"01:00",g:"K",h:"葡萄牙",a:"刚果(金)",v:"休斯敦",s:""},
 {d:"6月18日",t:"04:00",g:"L",h:"英格兰",a:"克罗地亚",v:"达拉斯",s:""},
 {d:"6月18日",t:"07:00",g:"L",h:"加纳",a:"巴拿马",v:"多伦多",s:""},
 {d:"6月18日",t:"10:00",g:"K",h:"乌兹别克斯坦",a:"哥伦比亚",v:"墨西哥城",s:""},
@@ -333,7 +339,7 @@ var WM=[
 {d:"6月19日",t:"03:00",g:"B",h:"瑞士",a:"波黑",v:"洛杉矶",s:""},
 {d:"6月19日",t:"06:00",g:"B",h:"加拿大",a:"卡塔尔",v:"温哥华",s:""},
 {d:"6月19日",t:"09:00",g:"A",h:"墨西哥",a:"韩国",v:"瓜达拉哈拉",s:""},
-{d:"6月20日",t:"03:00",g:"D",h:"美国",a:"奥大利亚",v:"西雅图",s:""},
+{d:"6月20日",t:"03:00",g:"D",h:"美国",a:"澳大利亚",v:"西雅图",s:""},
 {d:"6月20日",t:"06:00",g:"C",h:"苏格兰",a:"摩洛哥",v:"波士顿",s:""},
 {d:"6月20日",t:"09:00",g:"C",h:"巴西",a:"海地",v:"费城",s:""},
 {d:"6月20日",t:"12:00",g:"D",h:"土耳其",a:"巴拉圭",v:"蒙特雷",s:""},
@@ -352,7 +358,7 @@ var WM=[
 {d:"6月24日",t:"01:00",g:"K",h:"葡萄牙",a:"乌兹别克斯坦",v:"休斯敦",s:""},
 {d:"6月24日",t:"04:00",g:"L",h:"英格兰",a:"加纳",v:"波士顿",s:""},
 {d:"6月24日",t:"07:00",g:"L",h:"巴拿马",a:"克罗地亚",v:"多伦多",s:""},
-{d:"6月24日",t:"10:00",g:"K",h:"哥伦比亚",a:"民主刚果",v:"墨西哥城",s:""},
+{d:"6月24日",t:"10:00",g:"K",h:"哥伦比亚",a:"刚果(金)",v:"墨西哥城",s:""},
 {d:"6月25日",t:"03:00",g:"B",h:"瑞士",a:"加拿大",v:"温哥华",s:""},
 {d:"6月25日",t:"03:00",g:"B",h:"波黑",a:"卡塔尔",v:"西雅图",s:""},
 {d:"6月25日",t:"06:00",g:"A",h:"韩国",a:"墨西哥",v:"洛杉矶",s:""},
@@ -463,7 +469,7 @@ function goHome(){
 <div class="tab-bar">
 <button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔</span><span class="tab-label">首页</span></button>
 <button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
-<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">💬</span><span class="tab-label">朋友圈</span></button>
 <button class="tab-item" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
 </div>
 </div>
@@ -586,107 +592,17 @@ function renderMatches(dateKey){
 <div class="app page" id="page03" style="display:none">
 <div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
 <div class="content">
-<div id="newsSection"><div class="section-label">最新资讯</div>
-<a class="article-card" href="https://worldcup2026cn.com/news/20261-1-m537339/" target="_blank" rel="noopener">
-  <div class="article-date">发布时间：2026-06-14</div>
-  <div class="article-title">2026世界杯巴西1-1摩洛哥：桑巴军团遭非洲劲旅逼平</div>
-  <div class="article-summary">2026世界杯小组赛C组焦点战，巴西与摩洛哥1-1战平。桑巴军团率先破门却被非洲红狮顽强扳平，五星巴西爆冷失分。本文带来完整比赛进程、战术解析、关键球员评分与双方下一场展望，带你看懂这场势均力敌的强强对话。</div>
-  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
-</a>
-<a class="article-card" href="https://worldcup2026cn.com/news/20262-0-m537346/" target="_blank" rel="noopener">
-  <div class="article-date">发布时间：2026-06-14</div>
-  <div class="article-title">2026世界杯澳大利亚2-0土耳其：袋鼠军团完胜抢占小组先机</div>
-  <div class="article-summary">2026世界杯小组赛D组焦点战，澳大利亚凭借两个半场各下一城，以2-0完胜土耳其，拿下开门红。袋鼠军团展现出高效的防守反击与稳固的中场组织，而土耳其则在临门一脚上屡屡受阻。</div>
-  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
-</a>
-<a class="article-card" href="https://worldcup2026cn.com/news/2026-104-no-china-how-to-enjoy-worldcup-2026/" target="_blank" rel="noopener">
-  <div class="article-date">发布时间：2026-06-13</div>
-  <div class="article-title">国足又一次缺席：没有中国队的2026世界杯，我们为什么还要熬夜看104场？</div>
-  <div class="article-summary">2025年6月10日，国足在18强赛主场不敌印尼后彻底出局，第8次无缘世界杯。但CCTV5免费转播全部104场、海信蒙牛万达三家中国金主仍在场边，这届美加墨世界杯依然和你有关。</div>
-  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
-</a>
-<a class="article-card" href="https://worldcup2026cn.com/news/30-host-nations-usa-mexico-canada-tracker-2026/" target="_blank" rel="noopener">
-  <div class="article-date">发布时间：2026-06-12</div>
-  <div class="article-title">东道主诅咒还是主场福利？墨西哥30年困局与美加新势力的小组赛账本</div>
-  <div class="article-summary">2026年6月11日阿兹特克揭幕，墨西哥背着30年未进8强的包袱，美国押注波切蒂诺和普利西奇，加拿大靠戴维斯第二次踏上世界杯。三个东道主，三种命运，OPTA数据已经给出答案。</div>
-  <div class="article-meta"><span class="article-views">来源：worldcup2026cn.com</span><span class="article-source">阅读原文 →</span></div>
-</a></div>
-</div><div id="pinnedContent" style="display:none">
-<div class="pinned-article-inner">
-<div class="pinned-section">
-<h3 style="font-size:15px;font-weight:700;color:#fbbf24;margin:0 0 12px 0;padding-bottom:10px;border-bottom:1px solid rgba(251,191,36,.15);">用数据读懂比赛，用AI推荐方向——足球AI赛事预测智能分析2026世界杯全新升级！</h3>
-<p style="font-size:11px;color:#8b95a9;margin:0 0 14px 0;padding:0;">2026 世界杯扩军至 48 队、104 场比赛，赛事复杂度远超以往。传统看球靠经验和直觉，但在信息爆炸的今天，谁掌握数据，谁就拥有更清晰的比赛视角。</p>
-<p style="font-size:12px;font-weight:600;color:#e8edf5;margin:0 0 10px 0;padding:0;">V3.3.3 足球 AI 赛事预测分析系统 正式完成 2026 世界杯升级，从数据采集到 AI 推理，为每一场比赛提供结构化、可验证的分析服务。</p>
-</div>
-<div class="pinned-section">
-<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎八大维度，构建数据底座</h4>
-<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">系统每场比赛采集超过 8 大板块数据：比赛基本信息、竞彩赔率、亚洲盘口、联赛赛季数据、近期战绩、伤停信息、战意背景、特殊事项。数据源覆盖中国竞彩网、HKJC、SofaScore 等权威渠道，确保每一组数字都有据可查。</p>
-</div>
-<div class="pinned-section">
-<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎AI 推理，输出可执行的预测方向</h4>
-<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">基于采集数据，AI 引擎从多个角度交叉验证，输出 5 项核心指标：</p>
-<ul style="font-size:11px;color:#8b95a9;line-height:1.7;margin:0 0 10px 0;padding:0 0 0 16px;">
-<li>方向预测（胜/平/负）及置信度评级（A/B/C）</li>
-<li>总进球数 区间推荐</li>
-<li>半全场 走势预判</li>
-<li>比分 概率分布</li>
-<li>赛后复盘 与预测对照，持续优化模型</li>
-</ul>
-<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">每场比赛的分析结果以三种卡片状态呈现：已完赛（可展开查看预测回顾，命中/未中一目了然）、预测中（方向+评级标签）、待预测（等待数据就绪）。</p>
-</div>
-<div class="pinned-section">
-<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎不只是预测，更是分析工具</h4>
-<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">与传统"黑盒"推荐不同，V3.3.3 强调可追溯、可复盘。每场比赛结束后，系统自动生成预测回顾面板，逐项对比方向、总进球、半全场、比分的预测结果与实际赛果——命中高亮绿色、未中标红，让每一次分析都有据可依。</p>
-</div>
-<div class="pinned-section">
-<h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎2026 世界杯，数据陪你看到最后</h4>
-<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">从 6 月 11 日揭幕战到 7 月 19 日决赛，V3.3.3 将持续跟进全部 104 场比赛。无论你是否拥有数据背景，都能通过清晰的卡片界面读懂每一场比赛的 AI 分析逻辑。</p>
-</div>
-<p style="font-size:11px;color:#5a6577;margin:10px 0 0 0;padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.04);text-align:center;">用数据读懂比赛，用AI推荐方向</p>
-</div>
-</div><div class="viewer-overlay" id="viewerOverlay">
-  <div class="viewer-header">
-    <button class="viewer-close" onclick="closeArticle()">✖</button>
-    <span class="viewer-title" id="viewerTitle">文章</span>
-  </div>
-  <div class="viewer-loading" id="viewerLoading">加载中...</div>
-  <iframe class="viewer-frame" id="viewerFrame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
-  <div class="viewer-inline-content" id="viewerInline"></div>
+<div id="newsSection"><div class="section-label">朋友圈</div>
+<div id="momentsFeed" class="moments-feed"></div></div>
 </div>
 <div class="tab-bar">
 <button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
 <button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
-<button class="tab-item active" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item active" onclick="switchTab('page03',this)"><span class="tab-icon">💬</span><span class="tab-label">朋友圈</span></button>
 <button class="tab-item" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
 </div>
 </div>
-<script>
-function openArticle(id){
-  var overlay = document.getElementById("viewerOverlay");
-  var loading = document.getElementById("viewerLoading");
-  var frame = document.getElementById("viewerFrame");
-  var inline = document.getElementById("viewerInline");
-  var title = document.getElementById("viewerTitle");
-  if(id === 'pinned'){
-    title.textContent = "用数据读懂比赛，用AI推荐方向";
-    frame.style.display = "none";
-    inline.style.display = "block";
-    loading.style.display = "none";
-    var content = document.getElementById("pinnedContent").innerHTML;
-    inline.innerHTML = content;
-    overlay.classList.add("active");
-  }
-}
-function closeArticle(){
-  document.getElementById("viewerOverlay").classList.remove("active");
-  var frame = document.getElementById("viewerFrame");
-  frame.src = "";
-  frame.style.display = "";
-  var inline = document.getElementById("viewerInline");
-  inline.style.display = "none";
-  inline.innerHTML = "";
-}
-</script>
+
 <div class="app page" id="page04" style="display:none">
 <div class="hdr"><div><span class="ht">V3.3.3<span class="sub">世界杯专版</span></span></div><div class="hr"><div class="dot"></div><span>已连接</span></div></div>
 <div class="content">
@@ -734,6 +650,20 @@ function closeArticle(){
       <div class="guide-desc">数据尚未就绪的比赛，系统将在采集完成后自动生成预测分析，届时卡片状态会自动更新。</div>
     </div>
   </div>
+  <div class="guide-item" onclick="toggleGuide(this)">
+    <div class="guide-icon">📖</div>
+    <div class="guide-text">
+      <div class="guide-title">系统介绍 <span class="guide-expand-hint">展开 →</span></div>
+      <div class="guide-desc">用数据读懂比赛，用AI推荐方向——V3.3.3 核心功能介绍</div>
+      <div class="guide-body" style="display:none">
+        <div class="guide-section"><h4 class="guide-section-title">◎ 八大维度，构建数据底座</h4><p class="guide-section-body">系统每场比赛采集超过 8 大板块数据。</p></div>
+        <div class="guide-section"><h4 class="guide-section-title">◎ AI 推理，输出可执行的预测方向</h4><p class="guide-section-body">基于采集数据，AI 引擎从多个角度交叉验证，输出 5 项核心指标。</p></div>
+        <div class="guide-section"><h4 class="guide-section-title">◎ 不只是预测，更是分析工具</h4><p class="guide-section-body">与传统“黑盒”推荐不同，V3.3.3 强调可追溯、可复盘。</p></div>
+        <div class="guide-section"><h4 class="guide-section-title">◎ 2026 世界杯，数据陪你看到最后</h4><p class="guide-section-body">从 6 月 11 日揭幕战到 7 月 19 日决赛，V3.3.3 将持续跟进全部 104 场比赛。</p></div>
+        <p class="guide-footer">用数据读懂比赛，用AI推荐方向</p>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- 下载 APP -->
 <div class="section-title">下载 APP</div>
@@ -761,7 +691,7 @@ V3.3.3 Football AI Analysis System<br>
 <div class="tab-bar">
 <button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
 <button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
-<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">💬</span><span class="tab-label">朋友圈</span></button>
 <button class="tab-item active" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
 </div>
 <div id="pageSettings" class="app page" style="display:none">
@@ -834,7 +764,7 @@ V3.3.3 Football AI Analysis System<br>
 <div class="tab-bar">
 <button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
 <button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
-<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">💬</span><span class="tab-label">朋友圈</span></button>
 <button class="tab-item active" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
 </div>
 </div>
@@ -851,7 +781,7 @@ function closeQR(e){
 <div class="tab-bar">
 <button class="tab-item" onclick="switchTab('pageHome',this)"><span class="tab-icon">🏔️</span><span class="tab-label">首页</span></button>
 <button class="tab-item" onclick="switchTab('page02',this)"><span class="tab-icon">🔳</span><span class="tab-label">分析</span></button>
-<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">📰</span><span class="tab-label">资讯</span></button>
+<button class="tab-item" onclick="switchTab('page03',this)"><span class="tab-icon">💬</span><span class="tab-label">朋友圈</span></button>
 <button class="tab-item active" onclick="switchTab('page04',this)"><span class="tab-icon">⚙️</span><span class="tab-label">更多</span></button>
 
 </div>
@@ -934,20 +864,20 @@ var WM=[
 {d:"6月14日",t:"03:00",g:"B",h:"卡塔尔",a:"瑞士",v:"旧金山湾区",s:"1-1"},
 {d:"6月14日",t:"06:00",g:"C",h:"巴西",a:"摩洛哥",v:"纽约/新泽西",s:"1-1"},
 {d:"6月14日",t:"09:00",g:"C",h:"海地",a:"苏格兰",v:"波士顿",s:"0-1"},
-{d:"6月14日",t:"12:00",g:"D",h:"奥大利亚",a:"土耳其",v:"温哥华",s:"2-0"},
-{d:"6月15日",t:"01:00",g:"E",h:"德国",a:"库拉索",v:"休斯敦",s:""},
-{d:"6月15日",t:"04:00",g:"F",h:"荷兰",a:"日本",v:"达拉斯",s:""},
-{d:"6月15日",t:"07:00",g:"E",h:"科特迪瓦",a:"厄瓜多尔",v:"费城",s:""},
-{d:"6月15日",t:"10:00",g:"F",h:"瑞典",a:"突尼斯",v:"蒙特雷",s:""},
-{d:"6月16日",t:"00:00",g:"H",h:"西班牙",a:"佛得角",v:"亚特兰大",s:""},
-{d:"6月16日",t:"03:00",g:"G",h:"比利时",a:"埃及",v:"西雅图",s:""},
-{d:"6月16日",t:"06:00",g:"H",h:"沙特",a:"乌拉圭",v:"迈阿密",s:""},
-{d:"6月16日",t:"09:00",g:"G",h:"伊朗",a:"新西兰",v:"洛杉矶",s:""},
-{d:"6月17日",t:"03:00",g:"I",h:"法国",a:"塞内加尔",v:"纽约/新泽西",s:""},
-{d:"6月17日",t:"06:00",g:"I",h:"伊拉克",a:"挪威",v:"波士顿",s:""},
-{d:"6月17日",t:"09:00",g:"J",h:"阿根廷",a:"阿尔及利亚",v:"堪萨斯城",s:""},
-{d:"6月17日",t:"12:00",g:"J",h:"奥地利",a:"约旦",v:"旧金山湾区",s:""},
-{d:"6月18日",t:"01:00",g:"K",h:"葡萄牙",a:"民主刚果",v:"休斯敦",s:""},
+{d:"6月14日",t:"12:00",g:"D",h:"澳大利亚",a:"土耳其",v:"温哥华",s:"2-0"},
+{d:"6月15日",t:"01:00",g:"E",h:"德国",a:"库拉索",v:"休斯敦",s:"7-1"},
+{d:"6月15日",t:"04:00",g:"F",h:"荷兰",a:"日本",v:"达拉斯",s:"2-2"},
+{d:"6月15日",t:"07:00",g:"E",h:"科特迪瓦",a:"厄瓜多尔",v:"费城",s:"1-0"},
+{d:"6月15日",t:"10:00",g:"F",h:"瑞典",a:"突尼斯",v:"蒙特雷",s:"5-1"},
+{d:"6月16日",t:"00:00",g:"H",h:"西班牙",a:"佛得角",v:"亚特兰大",s:"0-0"},
+{d:"6月16日",t:"03:00",g:"G",h:"比利时",a:"埃及",v:"西雅图",s:"1-1"},
+{d:"6月16日",t:"06:00",g:"H",h:"沙特",a:"乌拉圭",v:"迈阿密",s:"1-1"},
+{d:"6月16日",t:"09:00",g:"G",h:"伊朗",a:"新西兰",v:"洛杉矶",s:"2-2"},
+{d:"6月17日",t:"03:00",g:"I",h:"法国",a:"塞内加尔",v:"纽约/新泽西",s:"3-1"},
+{d:"6月17日",t:"06:00",g:"I",h:"伊拉克",a:"挪威",v:"波士顿",s:"1-4"},
+{d:"6月17日",t:"09:00",g:"J",h:"阿根廷",a:"阿尔及利亚",v:"堪萨斯城",s:"3-0"},
+{d:"6月17日",t:"12:00",g:"J",h:"奥地利",a:"约旦",v:"旧金山湾区",s:"3-1"},
+{d:"6月18日",t:"01:00",g:"K",h:"葡萄牙",a:"刚果(金)",v:"休斯敦",s:""},
 {d:"6月18日",t:"04:00",g:"L",h:"英格兰",a:"克罗地亚",v:"达拉斯",s:""},
 {d:"6月18日",t:"07:00",g:"L",h:"加纳",a:"巴拿马",v:"多伦多",s:""},
 {d:"6月18日",t:"10:00",g:"K",h:"乌兹别克斯坦",a:"哥伦比亚",v:"墨西哥城",s:""},
@@ -955,7 +885,7 @@ var WM=[
 {d:"6月19日",t:"03:00",g:"B",h:"瑞士",a:"波黑",v:"洛杉矶",s:""},
 {d:"6月19日",t:"06:00",g:"B",h:"加拿大",a:"卡塔尔",v:"温哥华",s:""},
 {d:"6月19日",t:"09:00",g:"A",h:"墨西哥",a:"韩国",v:"瓜达拉哈拉",s:""},
-{d:"6月20日",t:"03:00",g:"D",h:"美国",a:"奥大利亚",v:"西雅图",s:""},
+{d:"6月20日",t:"03:00",g:"D",h:"美国",a:"澳大利亚",v:"西雅图",s:""},
 {d:"6月20日",t:"06:00",g:"C",h:"苏格兰",a:"摩洛哥",v:"波士顿",s:""},
 {d:"6月20日",t:"09:00",g:"C",h:"巴西",a:"海地",v:"费城",s:""},
 {d:"6月20日",t:"12:00",g:"D",h:"土耳其",a:"巴拉圭",v:"蒙特雷",s:""},
@@ -974,7 +904,7 @@ var WM=[
 {d:"6月24日",t:"01:00",g:"K",h:"葡萄牙",a:"乌兹别克斯坦",v:"休斯敦",s:""},
 {d:"6月24日",t:"04:00",g:"L",h:"英格兰",a:"加纳",v:"波士顿",s:""},
 {d:"6月24日",t:"07:00",g:"L",h:"巴拿马",a:"克罗地亚",v:"多伦多",s:""},
-{d:"6月24日",t:"10:00",g:"K",h:"哥伦比亚",a:"民主刚果",v:"墨西哥城",s:""},
+{d:"6月24日",t:"10:00",g:"K",h:"哥伦比亚",a:"刚果(金)",v:"墨西哥城",s:""},
 {d:"6月25日",t:"03:00",g:"B",h:"瑞士",a:"加拿大",v:"温哥华",s:""},
 {d:"6月25日",t:"03:00",g:"B",h:"波黑",a:"卡塔尔",v:"西雅图",s:""},
 {d:"6月25日",t:"06:00",g:"A",h:"韩国",a:"墨西哥",v:"洛杉矶",s:""},
@@ -1190,32 +1120,7 @@ function renderMatches(dateKey){
 }
 
 
-// From page03-news
-function openArticle(id){
-  var overlay = document.getElementById("viewerOverlay");
-  var loading = document.getElementById("viewerLoading");
-  var frame = document.getElementById("viewerFrame");
-  var inline = document.getElementById("viewerInline");
-  var title = document.getElementById("viewerTitle");
-  if(id === 'pinned'){
-    title.textContent = "用数据读懂比赛，用AI推荐方向";
-    frame.style.display = "none";
-    inline.style.display = "block";
-    loading.style.display = "none";
-    var content = document.getElementById("pinnedContent").innerHTML;
-    inline.innerHTML = content;
-    overlay.classList.add("active");
-  }
-}
-function closeArticle(){
-  document.getElementById("viewerOverlay").classList.remove("active");
-  var frame = document.getElementById("viewerFrame");
-  frame.src = "";
-  frame.style.display = "";
-  var inline = document.getElementById("viewerInline");
-  inline.style.display = "none";
-  inline.innerHTML = "";
-}
+
 // From page03-review
 var reviews = [
   {
@@ -1409,20 +1314,27 @@ function renderSettings(cfg) {
   document.getElementById('dataSources').innerHTML = dsHtml;
   var gHtml = '';
   cfg.guide.forEach(function(g){
-    gHtml += '<div class="guide-item"><div class="guide-icon">' + g.icon + '</div><div class="guide-text"><div class="guide-title">' + g.title + '</div><div class="guide-desc">' + g.desc + '</div></div></div>';
+    gHtml += '<div class="guide-item"' + (g.expandable ? ' onclick="toggleGuide(this)"' : '') + '>';
+    gHtml += '<div class="guide-icon">' + g.icon + '</div>';
+    gHtml += '<div class="guide-text"><div class="guide-title">' + g.title;
+    if(g.expandable) gHtml += ' <span class="guide-expand-hint">展开 →</span>';
+    gHtml += '</div><div class="guide-desc">' + g.desc + '</div>';
+    if(g.expandable && g.sections){
+      gHtml += '<div class="guide-body" style="display:none">';
+      g.sections.forEach(function(s){
+        gHtml += '<div class="guide-section"><h4 class="guide-section-title">◎ ' + s.heading + '</h4><p class="guide-section-body">' + s.body + '</p></div>';
+      });
+      gHtml += '<p class="guide-footer">用数据读懂比赛，用AI推荐方向</p>';
+      gHtml += '</div>';
+    }
+    gHtml += '</div></div>';
   });
   document.getElementById('guideSection').innerHTML = gHtml;
   if(cfg.appDownload) {
     var ad = cfg.appDownload;
     var url = ad.url || '';
-    var qrHtml = '';
-    if(url) {
-      qrHtml = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(url) + '" alt="QR" style="width:160px;height:160px;border-radius:8px;display:block;margin:0 auto 8px"><div class="download-qr-label">' + ad.qrLabel + '</div>';
-    } else {
-      qrHtml = '<div class="download-qr-label" style="color:var(--t3)">' + '配置下载链接后自动显示二维码' + '</div>';
-    }
-    var btnHtml = '<button class="download-btn" onclick="window.location.href=\'" + url + "\'">' + '📦' + ' ' + ad.buttonLabel + '</button>';
-    var adHtml = btnHtml + '<div class="download-qr-wrap">' + qrHtml + '</div>';
+    var btnHtml = '<a class="download-btn" href="' + url + '">' + '📦' + ' ' + ad.buttonLabel + '</a>';
+    var adHtml = btnHtml;
     if(!ad.enabled) { adHtml = '<div class="download-disabled">' + adHtml + '</div>'; }
     document.getElementById('appDownloadSection').innerHTML = adHtml;
     var adEl = document.getElementById('appDownloadSectionStatic'); if(adEl) adEl.innerHTML = adHtml;
@@ -1430,33 +1342,45 @@ function renderSettings(cfg) {
   document.getElementById('authorSection').innerHTML = '<p class="author-bio">' + cfg.author.bio + '</p><button class="contact-btn" onclick="showQR()">' + cfg.author.contactLabel + '</button>';
   document.getElementById('footerSection').innerHTML = cfg.footer.replace(/\n/g, '<br>');
 }
-function renderNews(news) {
+
+function toggleGuide(el){
+  var body = el.querySelector('.guide-body');
+  var hint = el.querySelector('.guide-expand-hint');
+  if(body){
+    var isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : 'block';
+    if(hint) hint.textContent = isOpen ? '展开 →' : '收起 ↑';
+  }
+}
+function renderMoments(moments) {
   var h = '';
-  news.forEach(function(a){
-    if(a.isPinned){
-      h += '<div class="pinned-card" onclick="openArticle(\'pinned\')">';
-      h += '<div class="article-date" style="color:var(--gold);font-weight:600">📰 来源：' + a.source + '</div>';
-      h += '<div class="article-title" style="font-size:15px;color:var(--gold);line-height:1.5">' + a.title + '</div>';
-      h += '<div class="article-summary">' + (a.sections && a.sections[0] ? a.sections[0].body.slice(0,80) + '...' : '') + '</div>';
-      h += '<div class="article-meta"><span class="article-views">👁 ' + a.views + ' 次阅读</span><span style="font-size:10px;color:var(--cyan)">📖 阅读全文</span></div>';
-      h += '</div>';
-      var pc = '';
-      if(a.sections){
-        a.sections.forEach(function(s){
-          pc += '<div class="pinned-section"><h4 style="font-size:13px;font-weight:700;color:#00e5ff;margin:0 0 8px 0;padding:0;">▎ ' + s.heading + '</h4>';
-          pc += '<p style="font-size:11px;color:#8b95a9;line-height:1.6;margin:0 0 10px 0;padding:0;">' + s.body + '</p></div>';
+  h += '<div class="moments-header">';
+  h += '<div class="moments-header-name">（老李）的朋友圈</div>';
+  h += '<div class="moments-header-desc">彩票店老板 · 每日兑奖分享</div>';
+  h += '</div></div>';
+  if (!moments || moments.length === 0) {
+    h += '<div class="moment-empty">暂无动态</div>';
+  } else {
+    moments.forEach(function(m){
+      h += '<div class="moment-date-sep">' + m.date + '</div>';
+      h += '<div class="moment-card">';
+      h += '<div class="moment-header">';
+      h += '';
+      h += '<div class="moment-author">';
+      h += '<div class="moment-nickname">老李 <span class="moment-badge">店主</span></div>';
+      h += '<div class="moment-time">' + m.date + ' 晚上</div>';
+      h += '</div></div>';
+      h += '<div class="moment-content">' + (m.content || '') + '</div>';
+      if (m.images && m.images.length > 0) {
+        h += '<div class="moment-images">';
+        m.images.forEach(function(img){
+          h += '<div class="moment-photo" onclick="window.open(\'' + img + '\')"><img src="' + img + '" alt="" loading="lazy"></div>';
         });
+        h += '</div>';
       }
-      document.getElementById('pinnedContent').innerHTML = '<div class="pinned-article-inner"><h3 style="font-size:15px;font-weight:700;color:#fbbf24;margin:0 0 12px 0;padding-bottom:10px;border-bottom:1px solid rgba(251,191,36,.15);">' + a.title + '</h3>' + pc + '<p style="font-size:11px;color:#5a6577;margin:10px 0 0 0;padding:8px 0 0 0;border-top:1px solid rgba(255,255,255,.04);text-align:center;">用数据读懂比赛，用AI推荐方向</p></div>';
-    } else {
-      h += '<a class="article-card" href="' + a.url + '" target="_blank" rel="noopener">';
-      h += '<div class="article-date">' + a.date + '</div>';
-      h += '<div class="article-title">' + a.title + '</div>';
-      h += '<div class="article-summary">' + a.summary + '</div>';
-      h += '<div class="article-meta"><span class="article-views">👁 ' + a.views + ' 次阅读</span><span style="font-size:10px;color:var(--cyan)">📖 阅读全文</span></div>';
-      h += '</a>';
-    }
-  });
+      h += '</div>';
+    });
+  }
   document.getElementById('newsSection').innerHTML = h;
 }
 async function initApp() {
@@ -1470,9 +1394,9 @@ async function initApp() {
     _cfg = cfg;
     renderCountdown();
     renderSettings(cfg);
-    var rn = await fetch('data/news.json');
+    var rn = await fetch('data/news.json?_t=' + Date.now());
     var nd = await rn.json();
-    renderNews([Object.assign({isPinned:true}, nd.pinned)].concat(nd.articles));
+    renderMoments(nd.moments);
     buildDateBar();
     var items = document.querySelectorAll('#dateBar .db-item');
     if(items.length > 0){
