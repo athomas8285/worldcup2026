@@ -1,379 +1,383 @@
-{
-  "dataSources": [
-    {
-      "name": "China Jingcai",
-      "status": "on",
-      "desc": "Odds"
-    },
-    {
-      "name": "HKJC",
-      "status": "on",
-      "desc": "Asian handicap"
-    },
-    {
-      "name": "SofaScore",
-      "status": "on",
-      "desc": "Stats"
-    }
-  ],
-  "guide": [
-    {
-      "icon": "recycle",
-      "title": "Finished",
-      "desc": "Review panel."
-    },
-    {
-      "icon": "chart",
-      "title": "Predicting",
-      "desc": "AI analysis."
-    },
-    {
-      "icon": "hourglass",
-      "title": "Pending",
-      "desc": "Waiting data."
-    }
-  ],
-  "teamFlags": {
-    "墨西哥": {
-      "flag": "🇲🇽",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "南非": {
-      "flag": "🇿🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "韩国": {
-      "flag": "🇰🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "捷克": {
-      "flag": "🇨🇿",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "加拿大": {
-      "flag": "🇨🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "波黑": {
-      "flag": "🇧🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "美国": {
-      "flag": "🇺🇸",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "巴拉圭": {
-      "flag": "🇵🇾",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "卡塔尔": {
-      "flag": "🇶🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "瑞士": {
-      "flag": "🇨🇭",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "巴西": {
-      "flag": "🇧🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "摩洛哥": {
-      "flag": "🇲🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "海地": {
-      "flag": "🇭🇹",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "苏格兰": {
-      "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "澳大利亚": {
-      "flag": "🇦🇺",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "土耳其": {
-      "flag": "🇹🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "德国": {
-      "flag": "🇩🇪",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "库拉索": {
-      "flag": "🇨🇼",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "荷兰": {
-      "flag": "🇳🇱",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "日本": {
-      "flag": "🇯🇵",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "科特迪瓦": {
-      "flag": "🇨🇮",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "厄瓜多尔": {
-      "flag": "🇪🇨",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "瑞典": {
-      "flag": "🇸🇪",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "突尼斯": {
-      "flag": "🇹🇳",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "西班牙": {
-      "flag": "🇪🇸",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "佛得角": {
-      "flag": "🇨🇻",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "比利时": {
-      "flag": "🇧🇪",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "埃及": {
-      "flag": "🇪🇬",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "乌拉圭": {
-      "flag": "🇺🇾",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "伊朗": {
-      "flag": "🇮🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "新西兰": {
-      "flag": "🇳🇿",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "法国": {
-      "flag": "🇫🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "塞内加尔": {
-      "flag": "🇸🇳",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "伊拉克": {
-      "flag": "🇮🇶",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "挪威": {
-      "flag": "🇳🇴",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "阿根廷": {
-      "flag": "🇦🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "阿尔及利亚": {
-      "flag": "🇩🇿",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "奥地利": {
-      "flag": "🇦🇹",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "约旦": {
-      "flag": "🇯🇴",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "葡萄牙": {
-      "flag": "🇵🇹",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "刚果(金)": {
-      "flag": "🇨🇩",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "英格兰": {
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "克罗地亚": {
-      "flag": "🇭🇷",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "加纳": {
-      "flag": "🇬🇭",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "巴拿马": {
-      "flag": "🇵🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "乌兹别克斯坦": {
-      "flag": "🇺🇿",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "哥伦比亚": {
-      "flag": "🇨🇴",
-      "color": "linear-gradient(135deg,#555,#555)"
-    },
-    "沙特": {
-      "flag": "🇸🇦",
-      "color": "linear-gradient(135deg,#555,#555)"
-    }
-  },
-  "venues": {
-    "周四001": {
-      "group": "A",
-      "venue": "墨西哥城"
-    },
-    "周四002": {
-      "group": "A",
-      "venue": "瓜达拉哈拉"
-    },
-    "周五003": {
-      "group": "B",
-      "venue": "多伦多"
-    },
-    "周五004": {
-      "group": "D",
-      "venue": "洛杉矶"
-    },
-    "周六005": {
-      "group": "B",
-      "venue": "旧金山湾区"
-    },
-    "周六006": {
-      "group": "C",
-      "venue": "纽约/新泽西"
-    },
-    "周六007": {
-      "group": "C",
-      "venue": "波士顿"
-    },
-    "周日009": {
-      "group": "E",
-      "venue": "休斯敦"
-    },
-    "周日010": {
-      "group": "F",
-      "venue": "达拉斯"
-    },
-    "周日011": {
-      "group": "E",
-      "venue": "费城"
-    },
-    "周日012": {
-      "group": "F",
-      "venue": "蒙特雷"
-    },
-    "周一013": {
-      "group": "H",
-      "venue": "亚特兰大"
-    },
-    "周一014": {
-      "group": "G",
-      "venue": "西雅图"
-    },
-    "周一016": {
-      "group": "G",
-      "venue": "洛杉矶"
-    },
-    "周二017": {
-      "group": "I",
-      "venue": "纽约/新泽西"
-    },
-    "周二018": {
-      "group": "I",
-      "venue": "波士顿"
-    },
-    "周二019": {
-      "group": "J",
-      "venue": "堪萨斯城"
-    },
-    "周二020": {
-      "group": "J",
-      "venue": "旧金山湾区"
-    },
-    "周三022": {
-      "group": "L",
-      "venue": "达拉斯"
-    },
-    "周三023": {
-      "group": "L",
-      "venue": "多伦多"
-    },
-    "周三024": {
-      "group": "K",
-      "venue": "墨西哥城"
-    },
-    "周一015": {
-      "group": "H",
-      "venue": "迈阿密"
-    },
-    "周三 021": {
-      "group": "K",
-      "venue": "休斯敦"
-    },
-    "周六 008": {
-      "group": "D",
-      "venue": "温哥华"
-    },
-    "周六008": {
-      "group": "D",
-      "venue": "温哥华"
-    },
-    "周三021": {
-      "group": "K",
-      "venue": "休斯敦"
-    },
-    "周四025": {
-      "group": "A",
-      "venue": "亚特兰大"
-    },
-    "周四026": {
-      "group": "B",
-      "venue": "洛杉矶"
-    },
-    "周四027": {
-      "group": "B",
-      "venue": "温哥华"
-    },
-    "周四028": {
-      "group": "A",
-      "venue": "瓜达拉哈拉"
-    },
-    "周五029": {
-      "group": "D",
-      "venue": "西雅图"
-    },
-    "周五030": {
-      "group": "C",
-      "venue": "波士顿"
-    },
-    "周五031": {
-      "group": "C",
-      "venue": "费城"
-    },
-    "周五032": {
-      "group": "D",
-      "venue": "蒙特雷"
-    }
-  },
-  "author": {
-    "bio": "??????????????????????????????????????????????????????????????????????????",
-    "contactLabel": "?? ????"
-  },
-  "footer": "V3.3.3 Football AI Analysis System\n?? ?????????????????????????????????????????????????",
-  "appDownload": {
-    "url": "http://127.0.0.1:8085/app.apk",
-    "buttonLabel": "下载 APK 安装包",
-    "qrLabel": "扫码下载 APK",
-    "enabled": true
-  }
+﻿{
+    "dataSources":  [
+                        {
+                            "name":  "China Jingcai",
+                            "status":  "on",
+                            "desc":  "Odds"
+                        },
+                        {
+                            "name":  "HKJC",
+                            "status":  "on",
+                            "desc":  "Asian handicap"
+                        },
+                        {
+                            "name":  "SofaScore",
+                            "status":  "on",
+                            "desc":  "Stats"
+                        }
+                    ],
+    "guide":  [
+                  {
+                      "icon":  "recycle",
+                      "title":  "Finished",
+                      "desc":  "Review panel."
+                  },
+                  {
+                      "icon":  "chart",
+                      "title":  "Predicting",
+                      "desc":  "AI analysis."
+                  },
+                  {
+                      "icon":  "hourglass",
+                      "title":  "Pending",
+                      "desc":  "Waiting data."
+                  }
+              ],
+    "teamFlags":  {
+                      "墨西哥":  {
+                                  "flag":  "🇲🇽",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "南非":  {
+                                 "flag":  "🇿🇦",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "韩国":  {
+                                 "flag":  "🇰🇷",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "捷克":  {
+                                 "flag":  "🇨🇿",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "加拿大":  {
+                                  "flag":  "🇨🇦",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "波黑":  {
+                                 "flag":  "🇧🇦",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "美国":  {
+                                 "flag":  "🇺🇸",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "巴拉圭":  {
+                                  "flag":  "🇵🇾",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "卡塔尔":  {
+                                  "flag":  "🇶🇦",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "瑞士":  {
+                                 "flag":  "🇨🇭",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "巴西":  {
+                                 "flag":  "🇧🇷",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "摩洛哥":  {
+                                  "flag":  "🇲🇦",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "海地":  {
+                                 "flag":  "🇭🇹",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "苏格兰":  {
+                                  "flag":  "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "澳大利亚":  {
+                                   "flag":  "🇦🇺",
+                                   "color":  "linear-gradient(135deg,#555,#555)"
+                               },
+                      "土耳其":  {
+                                  "flag":  "🇹🇷",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "德国":  {
+                                 "flag":  "🇩🇪",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "库拉索":  {
+                                  "flag":  "🇨🇼",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "荷兰":  {
+                                 "flag":  "🇳🇱",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "日本":  {
+                                 "flag":  "🇯🇵",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "科特迪瓦":  {
+                                   "flag":  "🇨🇮",
+                                   "color":  "linear-gradient(135deg,#555,#555)"
+                               },
+                      "厄瓜多尔":  {
+                                   "flag":  "🇪🇨",
+                                   "color":  "linear-gradient(135deg,#555,#555)"
+                               },
+                      "瑞典":  {
+                                 "flag":  "🇸🇪",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "突尼斯":  {
+                                  "flag":  "🇹🇳",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "西班牙":  {
+                                  "flag":  "🇪🇸",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "佛得角":  {
+                                  "flag":  "🇨🇻",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "比利时":  {
+                                  "flag":  "🇧🇪",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "埃及":  {
+                                 "flag":  "🇪🇬",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "乌拉圭":  {
+                                  "flag":  "🇺🇾",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "伊朗":  {
+                                 "flag":  "🇮🇷",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "新西兰":  {
+                                  "flag":  "🇳🇿",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "法国":  {
+                                 "flag":  "🇫🇷",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "塞内加尔":  {
+                                   "flag":  "🇸🇳",
+                                   "color":  "linear-gradient(135deg,#555,#555)"
+                               },
+                      "伊拉克":  {
+                                  "flag":  "🇮🇶",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "挪威":  {
+                                 "flag":  "🇳🇴",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "阿根廷":  {
+                                  "flag":  "🇦🇷",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "阿尔及利亚":  {
+                                    "flag":  "🇩🇿",
+                                    "color":  "linear-gradient(135deg,#555,#555)"
+                                },
+                      "奥地利":  {
+                                  "flag":  "🇦🇹",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "约旦":  {
+                                 "flag":  "🇯🇴",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "葡萄牙":  {
+                                  "flag":  "🇵🇹",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "刚果(金)":  {
+                                    "flag":  "🇨🇩",
+                                    "color":  "linear-gradient(135deg,#555,#555)"
+                                },
+                      "英格兰":  {
+                                  "flag":  "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "克罗地亚":  {
+                                   "flag":  "🇭🇷",
+                                   "color":  "linear-gradient(135deg,#555,#555)"
+                               },
+                      "加纳":  {
+                                 "flag":  "🇬🇭",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             },
+                      "巴拿马":  {
+                                  "flag":  "🇵🇦",
+                                  "color":  "linear-gradient(135deg,#555,#555)"
+                              },
+                      "乌兹别克斯坦":  {
+                                     "flag":  "🇺🇿",
+                                     "color":  "linear-gradient(135deg,#555,#555)"
+                                 },
+                      "哥伦比亚":  {
+                                   "flag":  "🇨🇴",
+                                   "color":  "linear-gradient(135deg,#555,#555)"
+                               },
+                      "沙特":  {
+                                 "flag":  "🇸🇦",
+                                 "color":  "linear-gradient(135deg,#555,#555)"
+                             }
+                  },
+    "venues":  {
+                   "周四001":  {
+                                 "group":  "A",
+                                 "venue":  "墨西哥城"
+                             },
+                   "周四002":  {
+                                 "group":  "A",
+                                 "venue":  "瓜达拉哈拉"
+                             },
+                   "周五003":  {
+                                 "group":  "B",
+                                 "venue":  "多伦多"
+                             },
+                   "周五004":  {
+                                 "group":  "D",
+                                 "venue":  "洛杉矶"
+                             },
+                   "周六005":  {
+                                 "group":  "B",
+                                 "venue":  "旧金山湾区"
+                             },
+                   "周六006":  {
+                                 "group":  "C",
+                                 "venue":  "纽约/新泽西"
+                             },
+                   "周六007":  {
+                                 "group":  "C",
+                                 "venue":  "波士顿"
+                             },
+                   "周日009":  {
+                                 "group":  "E",
+                                 "venue":  "休斯敦"
+                             },
+                   "周日010":  {
+                                 "group":  "F",
+                                 "venue":  "达拉斯"
+                             },
+                   "周日011":  {
+                                 "group":  "E",
+                                 "venue":  "费城"
+                             },
+                   "周日012":  {
+                                 "group":  "F",
+                                 "venue":  "蒙特雷"
+                             },
+                   "周一013":  {
+                                 "group":  "H",
+                                 "venue":  "亚特兰大"
+                             },
+                   "周一014":  {
+                                 "group":  "G",
+                                 "venue":  "西雅图"
+                             },
+                   "周一016":  {
+                                 "group":  "G",
+                                 "venue":  "洛杉矶"
+                             },
+                   "周二017":  {
+                                 "group":  "I",
+                                 "venue":  "纽约/新泽西"
+                             },
+                   "周二018":  {
+                                 "group":  "I",
+                                 "venue":  "波士顿"
+                             },
+                   "周二019":  {
+                                 "group":  "J",
+                                 "venue":  "堪萨斯城"
+                             },
+                   "周二020":  {
+                                 "group":  "J",
+                                 "venue":  "旧金山湾区"
+                             },
+                   "周三022":  {
+                                 "group":  "L",
+                                 "venue":  "达拉斯"
+                             },
+                   "周三023":  {
+                                 "group":  "L",
+                                 "venue":  "多伦多"
+                             },
+                   "周三024":  {
+                                 "group":  "K",
+                                 "venue":  "墨西哥城"
+                             },
+                   "周一015":  {
+                                 "group":  "H",
+                                 "venue":  "迈阿密"
+                             },
+                   "周三 021":  {
+                                  "group":  "K",
+                                  "venue":  "休斯敦"
+                              },
+                   "周六 008":  {
+                                  "group":  "D",
+                                  "venue":  "温哥华"
+                              },
+                   "周六008":  {
+                                 "group":  "D",
+                                 "venue":  "温哥华"
+                             },
+                   "周三021":  {
+                                 "group":  "K",
+                                 "venue":  "休斯敦"
+                             },
+                   "周四025":  {
+                                 "group":  "A",
+                                 "venue":  "亚特兰大"
+                             },
+                   "周四026":  {
+                                 "group":  "B",
+                                 "venue":  "洛杉矶"
+                             },
+                   "周四027":  {
+                                 "group":  "B",
+                                 "venue":  "温哥华"
+                             },
+                   "周四028":  {
+                                 "group":  "A",
+                                 "venue":  "瓜达拉哈拉"
+                             },
+                   "周五029":  {
+                                 "group":  "D",
+                                 "venue":  "西雅图"
+                             },
+                   "周五030":  {
+                                 "group":  "C",
+                                 "venue":  "波士顿"
+                             },
+                   "周五031":  {
+                                 "group":  "C",
+                                 "venue":  "费城"
+                             },
+                   "周五032":  {
+                                 "group":  "D",
+                                 "venue":  "蒙特雷"
+                             }
+               },
+    "author":  {
+                   "bio":  "??????????????????????????????????????????????????????????????????????????",
+                   "contactLabel":  "?? ????"
+               },
+    "footer":  "V3.3.3 Football AI Analysis System\n?? ?????????????????????????????????????????????????",
+    "appDownload":  {
+                        "url":  "http://127.0.0.1:8085/app.apk",
+                        "buttonLabel":  "下载 APK 安装包",
+                        "qrLabel":  "扫码下载 APK",
+                        "enabled":  true
+                    },
+    "auth":  {
+                 "appId":  "6a328364af3a7dcfbba139fd",
+                 "enabled":  true
+             }
 }
