@@ -1416,7 +1416,15 @@ async function initApp() {
     document.getElementById('loadingOverlay').innerHTML = '<div style="padding:40px;text-align:center;color:var(--t3)"><div style="font-size:36px">ERROR</div><div style="font-size:14px">' + e.message + '</div><div style="font-size:11px">' + (e.stack||"").slice(0,200) + '</div></div>';
   }
 }
-initApp();
+initApp().then(function(){
+  var lo = document.getElementById('loadingOverlay');
+  if(lo) lo.style.display = 'none';
+}).catch(function(e){
+  console.error(e);
+  var lo = document.getElementById('loadingOverlay');
+  if(lo) lo.style.display = 'none';
+});
+setTimeout(function(){var lo=document.getElementById('loadingOverlay');if(lo&&lo.style.display!=='none')lo.style.display='none';},3000);
 </script>
 </body>
 </html>
